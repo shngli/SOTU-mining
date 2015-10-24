@@ -1,0 +1,862 @@
+The sorted Presidential cosine similarities are:
+Barack Obama 44 and William J. Clinton 42: 0.0676334806187
+Ronald Reagan 40 and Jimmy Carter 39: 0.0623734943335
+Harry S. Truman 33 and Dwight D. Eisenhower 34: 0.0595218469118
+Jimmy Carter 39 and Gerald R. Ford 38: 0.0584774329405
+George H.W. Bush 41 and Ronald Reagan 40: 0.0558422689536
+Barack Obama 44 and George W. Bush 43: 0.0546894180587
+Ronald Reagan 40 and Gerald R. Ford 38: 0.0530576877938
+Dwight D. Eisenhower 34 and John F. Kennedy 35: 0.0518104579733
+John F. Kennedy 35 and Jimmy Carter 39: 0.0516111916764
+Ronald Reagan 40 and William J. Clinton 42: 0.0514051229734
+George H.W. Bush 41 and William J. Clinton 42: 0.0508569724243
+Lyndon B. Johnson 36 and John F. Kennedy 35: 0.0483871769983
+Dwight D. Eisenhower 34 and Jimmy Carter 39: 0.0477242185966
+William J. Clinton 42 and George W. Bush 43: 0.0476947761951
+George H.W. Bush 41 and George W. Bush 43: 0.047345218519
+George H.W. Bush 41 and Jimmy Carter 39: 0.0470845378234
+Harry S. Truman 33 and Jimmy Carter 39: 0.0451337004046
+Lyndon B. Johnson 36 and Jimmy Carter 39: 0.0444321268807
+George H.W. Bush 41 and Barack Obama 44: 0.0444225416568
+George H.W. Bush 41 and Gerald R. Ford 38: 0.0442467164769
+Lyndon B. Johnson 36 and Gerald R. Ford 38: 0.0436992463319
+John F. Kennedy 35 and Gerald R. Ford 38: 0.0432741717334
+Harry S. Truman 33 and John F. Kennedy 35: 0.0432450634479
+Dwight D. Eisenhower 34 and Gerald R. Ford 38: 0.043084086215
+Lyndon B. Johnson 36 and Ronald Reagan 40: 0.0430060068121
+Ronald Reagan 40 and John F. Kennedy 35: 0.0404694611677
+Ronald Reagan 40 and Barack Obama 44: 0.0404110979107
+Ronald Reagan 40 and Dwight D. Eisenhower 34: 0.0394570660785
+George H.W. Bush 41 and Lyndon B. Johnson 36: 0.0392741983237
+Harry S. Truman 33 and Lyndon B. Johnson 36: 0.0371854307937
+Harry S. Truman 33 and Ronald Reagan 40: 0.0371091206993
+Lyndon B. Johnson 36 and Dwight D. Eisenhower 34: 0.037050350929
+Lyndon B. Johnson 36 and Richard Nixon 37: 0.0367971839261
+William J. Clinton 42 and Gerald R. Ford 38: 0.0364619942498
+Ronald Reagan 40 and Richard Nixon 37: 0.0359651693628
+George H.W. Bush 41 and John F. Kennedy 35: 0.0359205942697
+Richard Nixon 37 and Gerald R. Ford 38: 0.0359076910885
+Ronald Reagan 40 and George W. Bush 43: 0.035217494097
+Lyndon B. Johnson 36 and William J. Clinton 42: 0.0348318289355
+Jimmy Carter 39 and William J. Clinton 42: 0.0346507733862
+Barack Obama 44 and Jimmy Carter 39: 0.0336254064823
+Jimmy Carter 39 and George W. Bush 43: 0.0327762161222
+John F. Kennedy 35 and William J. Clinton 42: 0.0327072538283
+Harry S. Truman 33 and Gerald R. Ford 38: 0.0322539597607
+George H.W. Bush 41 and Dwight D. Eisenhower 34: 0.0320762698153
+Richard Nixon 37 and Jimmy Carter 39: 0.0320564919315
+Barack Obama 44 and Gerald R. Ford 38: 0.0310177055984
+George H.W. Bush 41 and Harry S. Truman 33: 0.0296489739953
+Richard Nixon 37 and Dwight D. Eisenhower 34: 0.0290907865083
+George H.W. Bush 41 and Richard Nixon 37: 0.0280547545919
+Lyndon B. Johnson 36 and George W. Bush 43: 0.0280345134583
+John F. Kennedy 35 and George W. Bush 43: 0.0280274455607
+George Washington 1 and John Adams 2: 0.0277739763793
+Lyndon B. Johnson 36 and Barack Obama 44: 0.0277275802026
+Gerald R. Ford 38 and George W. Bush 43: 0.0276554486426
+Richard Nixon 37 and John F. Kennedy 35: 0.0273484949516
+John F. Kennedy 35 and Barack Obama 44: 0.0266413927823
+Harry S. Truman 33 and Richard Nixon 37: 0.0244002257494
+Richard Nixon 37 and William J. Clinton 42: 0.0238178360368
+Dwight D. Eisenhower 34 and William J. Clinton 42: 0.0223105322661
+Dwight D. Eisenhower 34 and Herbert Hoover 31: 0.0217843499618
+Harry S. Truman 33 and Franklin D. Roosevelt 32: 0.0204387937794
+Harry S. Truman 33 and William J. Clinton 42: 0.0202388165762
+Ronald Reagan 40 and Franklin D. Roosevelt 32: 0.0200644689232
+Harry S. Truman 33 and Herbert Hoover 31: 0.0199993730605
+Dwight D. Eisenhower 34 and Franklin D. Roosevelt 32: 0.0193809297932
+Richard Nixon 37 and George W. Bush 43: 0.0193304286056
+Richard Nixon 37 and Barack Obama 44: 0.0177805055476
+Jimmy Carter 39 and Herbert Hoover 31: 0.0173504667416
+John F. Kennedy 35 and Franklin D. Roosevelt 32: 0.0166419783083
+Ronald Reagan 40 and Herbert Hoover 31: 0.0166300152719
+Dwight D. Eisenhower 34 and George W. Bush 43: 0.0161282875908
+Benjamin Harrison 23 and Grover Cleveland 22:24: 0.0156395528982
+George H.W. Bush 41 and Franklin D. Roosevelt 32: 0.015333147366
+Harry S. Truman 33 and George W. Bush 43: 0.0147222788097
+Lyndon B. Johnson 36 and Franklin D. Roosevelt 32: 0.0146086269858
+Jimmy Carter 39 and Franklin D. Roosevelt 32: 0.0145380122034
+John F. Kennedy 35 and Herbert Hoover 31: 0.0144648791472
+Calvin Coolidge 30 and Herbert Hoover 31: 0.0142291377218
+Rutherford B. Hayes 19 and Grover Cleveland 22:24: 0.0138443064828
+William J. Clinton 42 and Franklin D. Roosevelt 32: 0.0133759337402
+Gerald R. Ford 38 and Franklin D. Roosevelt 32: 0.0128350458347
+George W. Bush 43 and Franklin D. Roosevelt 32: 0.0124598492429
+Herbert Hoover 31 and Gerald R. Ford 38: 0.0123106339478
+James Polk 11 and John Tyler 10: 0.0117753183602
+Calvin Coolidge 30 and Dwight D. Eisenhower 34: 0.0117425882854
+George H.W. Bush 41 and Herbert Hoover 31: 0.0115659953128
+Dwight D. Eisenhower 34 and Barack Obama 44: 0.0114677886516
+Zachary Taylor 12 and Millard Fillmore 13: 0.0113185599788
+Harry S. Truman 33 and Barack Obama 44: 0.0108988675322
+Richard Nixon 37 and Franklin D. Roosevelt 32: 0.0107054584194
+Harry S. Truman 33 and Calvin Coolidge 30: 0.0105269940419
+Calvin Coolidge 30 and Warren Harding 29: 0.010508427659
+Herbert Hoover 31 and Franklin D. Roosevelt 32: 0.0103381460741
+James Polk 11 and Millard Fillmore 13: 0.00983978402588
+Benjamin Harrison 23 and Rutherford B. Hayes 19: 0.00954959250232
+Warren Harding 29 and Dwight D. Eisenhower 34: 0.00953111113167
+Barack Obama 44 and Franklin D. Roosevelt 32: 0.00930933518507
+James Polk 11 and Zachary Taylor 12: 0.00912445874849
+Warren Harding 29 and Herbert Hoover 31: 0.00889690264323
+Lyndon B. Johnson 36 and Herbert Hoover 31: 0.00828250924886
+Calvin Coolidge 30 and Jimmy Carter 39: 0.00801836044544
+Grover Cleveland 22:24 and Andrew Johnson 17: 0.00794985991524
+Chester A. Arthur 21 and Benjamin Harrison 23: 0.00780919075888
+James Madison 4 and Thomas Jefferson 3: 0.0076945686523
+James Madison 4 and James Monroe 5: 0.00723702535977
+Chester A. Arthur 21 and Grover Cleveland 22:24: 0.00717289045669
+William J. Clinton 42 and Herbert Hoover 31: 0.00714150657336
+Calvin Coolidge 30 and Ronald Reagan 40: 0.00713861989387
+William H. Taft 27 and Theodore Roosevelt 26: 0.00705142742255
+Harry S. Truman 33 and Warren Harding 29: 0.0068791840903
+Woodrow Wilson 28 and Franklin D. Roosevelt 32: 0.00685028483567
+Woodrow Wilson 28 and John Adams 2: 0.00683674801902
+Rutherford B. Hayes 19 and Andrew Johnson 17: 0.00666055370722
+William McKinley 25 and Grover Cleveland 22:24: 0.00659086140689
+Warren Harding 29 and Theodore Roosevelt 26: 0.00658067778409
+Woodrow Wilson 28 and Theodore Roosevelt 26: 0.00657120156166
+Calvin Coolidge 30 and Theodore Roosevelt 26: 0.00649547264935
+Richard Nixon 37 and Herbert Hoover 31: 0.00637123136757
+Dwight D. Eisenhower 34 and Woodrow Wilson 28: 0.00637078707398
+James Monroe 5 and John Adams 2: 0.00632174466518
+Warren Harding 29 and Jimmy Carter 39: 0.00625177923467
+Calvin Coolidge 30 and John F. Kennedy 35: 0.00624998899536
+James Madison 4 and George Washington 1: 0.00621608842356
+Andrew Johnson 17 and John Tyler 10: 0.0060050682114
+James Buchanan 15 and Abraham Lincoln 16: 0.00588455830398
+George H.W. Bush 41 and Calvin Coolidge 30: 0.00582338632843
+Woodrow Wilson 28 and Herbert Hoover 31: 0.00579728770601
+John Quincy Adams 6 and James Monroe 5: 0.00578689328743
+Calvin Coolidge 30 and Woodrow Wilson 28: 0.00566199593344
+Calvin Coolidge 30 and Gerald R. Ford 38: 0.00553148866105
+Benjamin Harrison 23 and Andrew Johnson 17: 0.00545149975388
+John Quincy Adams 6 and John Adams 2: 0.00544521678304
+Martin van Buren 8 and John Tyler 10: 0.00540150126581
+George Washington 1 and Thomas Jefferson 3: 0.00538394184172
+William McKinley 25 and Theodore Roosevelt 26: 0.00536891489175
+Ronald Reagan 40 and Woodrow Wilson 28: 0.00510442559486
+George H.W. Bush 41 and Woodrow Wilson 28: 0.00509899631856
+James Polk 11 and James Buchanan 15: 0.00508795563248
+Abraham Lincoln 16 and Andrew Johnson 17: 0.00506626316163
+Warren Harding 29 and Woodrow Wilson 28: 0.00500077955971
+Barack Obama 44 and Herbert Hoover 31: 0.00499548623969
+Franklin Pierce 14 and James Buchanan 15: 0.00498036284212
+William H. Taft 27 and Grover Cleveland 22:24: 0.00497961964881
+Ulysses S. Grant 18 and William McKinley 25: 0.00496005302861
+Grover Cleveland 22:24 and John Tyler 10: 0.00495857346855
+Warren Harding 29 and John F. Kennedy 35: 0.00492610613208
+Herbert Hoover 31 and George W. Bush 43: 0.00473295402758
+Ulysses S. Grant 18 and Abraham Lincoln 16: 0.00470815258226
+Woodrow Wilson 28 and Jimmy Carter 39: 0.00458499355922
+Warren Harding 29 and Franklin D. Roosevelt 32: 0.00455868370401
+Warren Harding 29 and Gerald R. Ford 38: 0.00445248692623
+Chester A. Arthur 21 and Rutherford B. Hayes 19: 0.00442986468258
+Harry S. Truman 33 and Woodrow Wilson 28: 0.0044106323464
+Warren Harding 29 and Ronald Reagan 40: 0.00436468061096
+James Monroe 5 and Thomas Jefferson 3: 0.00433193333553
+James Monroe 5 and William McKinley 25: 0.00432876456715
+Calvin Coolidge 30 and William H. Taft 27: 0.0042668777562
+William H. Taft 27 and Herbert Hoover 31: 0.00423426489137
+George Washington 1 and James Monroe 5: 0.00420411488479
+Ulysses S. Grant 18 and Grover Cleveland 22:24: 0.0041177282811
+James Monroe 5 and Andrew Jackson 7: 0.00407651546443
+William H. Taft 27 and William McKinley 25: 0.00404757490741
+Chester A. Arthur 21 and William McKinley 25: 0.00399771898988
+John Quincy Adams 6 and Thomas Jefferson 3: 0.00392841134876
+Calvin Coolidge 30 and Franklin D. Roosevelt 32: 0.00390993380949
+James Monroe 5 and Millard Fillmore 13: 0.00390846018861
+Ulysses S. Grant 18 and Rutherford B. Hayes 19: 0.0038090038367
+Martin van Buren 8 and Grover Cleveland 22:24: 0.00380577932114
+Woodrow Wilson 28 and Gerald R. Ford 38: 0.00379328445389
+James Buchanan 15 and John Tyler 10: 0.00372577748645
+James Buchanan 15 and James Monroe 5: 0.00372095360992
+Ulysses S. Grant 18 and Andrew Johnson 17: 0.00366215389691
+James Monroe 5 and Ulysses S. Grant 18: 0.00363527558605
+Lyndon B. Johnson 36 and Calvin Coolidge 30: 0.003621915457
+Millard Fillmore 13 and John Tyler 10: 0.00355862314486
+Martin van Buren 8 and Andrew Johnson 17: 0.00354291928386
+James Buchanan 15 and Andrew Johnson 17: 0.00352343205145
+Benjamin Harrison 23 and Theodore Roosevelt 26: 0.00345559634827
+James Buchanan 15 and Zachary Taylor 12: 0.00341100481521
+John Quincy Adams 6 and Andrew Jackson 7: 0.00340352142226
+Calvin Coolidge 30 and William J. Clinton 42: 0.00339421615191
+James Buchanan 15 and Millard Fillmore 13: 0.00338591258534
+Grover Cleveland 22:24 and Herbert Hoover 31: 0.00336165449318
+Woodrow Wilson 28 and John F. Kennedy 35: 0.00336130749961
+William H. Taft 27 and Benjamin Harrison 23: 0.00335912282387
+George H.W. Bush 41 and Warren Harding 29: 0.00331750139541
+Martin van Buren 8 and Andrew Jackson 7: 0.00330467294963
+Chester A. Arthur 21 and William H. Taft 27: 0.00329886141919
+James Buchanan 15 and Grover Cleveland 22:24: 0.00329523794484
+Martin van Buren 8 and Rutherford B. Hayes 19: 0.00322833918298
+Franklin Pierce 14 and James Monroe 5: 0.00320683592056
+Woodrow Wilson 28 and William J. Clinton 42: 0.00316886389238
+Calvin Coolidge 30 and Benjamin Harrison 23: 0.0031584514578
+James Madison 4 and John Quincy Adams 6: 0.00314111318681
+Millard Fillmore 13 and John Adams 2: 0.00313738806115
+William McKinley 25 and Rutherford B. Hayes 19: 0.00312408075677
+George Washington 1 and Woodrow Wilson 28: 0.00311806847611
+James Buchanan 15 and Rutherford B. Hayes 19: 0.00310636008891
+Abraham Lincoln 16 and Rutherford B. Hayes 19: 0.00310391436863
+Franklin Pierce 14 and Zachary Taylor 12: 0.00306866770803
+Calvin Coolidge 30 and Richard Nixon 37: 0.00306249546597
+Zachary Taylor 12 and John Tyler 10: 0.00303390206123
+Warren Harding 29 and Benjamin Harrison 23: 0.0030149156787
+James Madison 4 and John Adams 2: 0.00298882475296
+Ulysses S. Grant 18 and John Adams 2: 0.0029240500862
+Calvin Coolidge 30 and Barack Obama 44: 0.00291902449645
+Benjamin Harrison 23 and William McKinley 25: 0.00291345098241
+Rutherford B. Hayes 19 and John Tyler 10: 0.00287114841995
+Warren Harding 29 and Richard Nixon 37: 0.00279742167096
+James Buchanan 15 and Martin van Buren 8: 0.00279531716323
+Zachary Taylor 12 and Theodore Roosevelt 26: 0.00278517589053
+Franklin Pierce 14 and Millard Fillmore 13: 0.00276096958493
+Warren Harding 29 and William H. Taft 27: 0.00276089763815
+James Polk 11 and James Monroe 5: 0.00274719171773
+James Buchanan 15 and William McKinley 25: 0.00274084413821
+Benjamin Harrison 23 and Herbert Hoover 31: 0.00269865795685
+Thomas Jefferson 3 and Andrew Jackson 7: 0.00267507574831
+John Quincy Adams 6 and George Washington 1: 0.00266668562245
+Theodore Roosevelt 26 and Franklin D. Roosevelt 32: 0.00263474368759
+Franklin Pierce 14 and John Quincy Adams 6: 0.00254260731105
+James Buchanan 15 and Ulysses S. Grant 18: 0.00253004184047
+Martin van Buren 8 and Herbert Hoover 31: 0.00252929169211
+Ulysses S. Grant 18 and John Tyler 10: 0.00251168942086
+Lyndon B. Johnson 36 and Woodrow Wilson 28: 0.00250196430512
+Millard Fillmore 13 and Andrew Jackson 7: 0.00249133016846
+Woodrow Wilson 28 and George W. Bush 43: 0.00242399047782
+James Polk 11 and Martin van Buren 8: 0.00238647416137
+William H. Taft 27 and Woodrow Wilson 28: 0.00233609713626
+Andrew Jackson 7 and John Adams 2: 0.00231637206346
+Millard Fillmore 13 and Thomas Jefferson 3: 0.00231232143987
+James Madison 4 and James Polk 11: 0.00222395171952
+Calvin Coolidge 30 and George W. Bush 43: 0.00217688021285
+Ulysses S. Grant 18 and Millard Fillmore 13: 0.00216332413005
+Thomas Jefferson 3 and John Adams 2: 0.0021584300683
+John Quincy Adams 6 and Chester A. Arthur 21: 0.00214826098386
+James Buchanan 15 and John Adams 2: 0.002138022583
+John Quincy Adams 6 and Millard Fillmore 13: 0.00212938159962
+Richard Nixon 37 and Woodrow Wilson 28: 0.00212005979206
+Martin van Buren 8 and Ulysses S. Grant 18: 0.00211385135607
+James Buchanan 15 and Benjamin Harrison 23: 0.00208748565664
+Lyndon B. Johnson 36 and Warren Harding 29: 0.00207351358778
+Calvin Coolidge 30 and William McKinley 25: 0.00204917609591
+Franklin Pierce 14 and Andrew Jackson 7: 0.00204701112991
+George Washington 1 and Millard Fillmore 13: 0.00202466490001
+Chester A. Arthur 21 and Ulysses S. Grant 18: 0.00201005638988
+Martin van Buren 8 and Millard Fillmore 13: 0.00200715545223
+Benjamin Harrison 23 and John Tyler 10: 0.00199230740054
+James Madison 4 and James Buchanan 15: 0.00199111218145
+William H. Taft 27 and Rutherford B. Hayes 19: 0.00198440079902
+George Washington 1 and Martin van Buren 8: 0.00193736539533
+Zachary Taylor 12 and Andrew Jackson 7: 0.00193168561596
+James Madison 4 and Franklin Pierce 14: 0.00192554184651
+James Monroe 5 and John Tyler 10: 0.00191857337228
+George Washington 1 and Andrew Jackson 7: 0.0018909548124
+James Monroe 5 and Grover Cleveland 22:24: 0.0018799159627
+Andrew Jackson 7 and John Tyler 10: 0.00187095315876
+Chester A. Arthur 21 and James Monroe 5: 0.00186888661302
+William H. Taft 27 and Dwight D. Eisenhower 34: 0.00184542895705
+Zachary Taylor 12 and James Monroe 5: 0.00183675591633
+Millard Fillmore 13 and Rutherford B. Hayes 19: 0.00183458536305
+Zachary Taylor 12 and Abraham Lincoln 16: 0.00181790379045
+William McKinley 25 and Andrew Johnson 17: 0.00179844745048
+James Madison 4 and Millard Fillmore 13: 0.00178928585362
+Benjamin Harrison 23 and Ulysses S. Grant 18: 0.00178437274895
+James Polk 11 and Ulysses S. Grant 18: 0.00177196067103
+Chester A. Arthur 21 and James Buchanan 15: 0.00174270275846
+Abraham Lincoln 16 and Grover Cleveland 22:24: 0.00174182908122
+Martin van Buren 8 and James Monroe 5: 0.00171833232177
+William McKinley 25 and Abraham Lincoln 16: 0.00169255780639
+Martin van Buren 8 and Benjamin Harrison 23: 0.00168410890657
+James Buchanan 15 and Andrew Jackson 7: 0.00165325712125
+Calvin Coolidge 30 and Rutherford B. Hayes 19: 0.00165237411851
+James Polk 11 and Rutherford B. Hayes 19: 0.00165212828218
+Benjamin Harrison 23 and Woodrow Wilson 28: 0.0016435684769
+James Polk 11 and William H. Taft 27: 0.0016219995229
+James Polk 11 and Andrew Jackson 7: 0.0016179940823
+Chester A. Arthur 21 and Warren Harding 29: 0.001615204779
+Franklin Pierce 14 and William McKinley 25: 0.00159177688434
+Chester A. Arthur 21 and Andrew Jackson 7: 0.00156964875287
+Ulysses S. Grant 18 and Theodore Roosevelt 26: 0.00155207478235
+James Madison 4 and Andrew Jackson 7: 0.00155151901471
+Theodore Roosevelt 26 and Herbert Hoover 31: 0.00154329827343
+James Polk 11 and Thomas Jefferson 3: 0.00153745080497
+Warren Harding 29 and William J. Clinton 42: 0.00153578040183
+John Quincy Adams 6 and James Polk 11: 0.00153501234908
+William H. Taft 27 and Ulysses S. Grant 18: 0.00150012256124
+Franklin Pierce 14 and Ulysses S. Grant 18: 0.00149921192346
+Chester A. Arthur 21 and Thomas Jefferson 3: 0.00147281960855
+Franklin Pierce 14 and James Polk 11: 0.00145190077134
+John F. Kennedy 35 and Grover Cleveland 22:24: 0.00145161973521
+James Madison 4 and Ulysses S. Grant 18: 0.00144229183236
+William McKinley 25 and Franklin D. Roosevelt 32: 0.00144213647485
+James Polk 11 and Benjamin Harrison 23: 0.00141793899075
+Warren Harding 29 and Grover Cleveland 22:24: 0.00140196204973
+John Quincy Adams 6 and Martin van Buren 8: 0.00137963941945
+Chester A. Arthur 21 and Andrew Johnson 17: 0.00137957446563
+Harry S. Truman 33 and William H. Taft 27: 0.0013704338042
+James Madison 4 and John Tyler 10: 0.00136383032108
+Zachary Taylor 12 and William H. Taft 27: 0.00135300486365
+Chester A. Arthur 21 and Theodore Roosevelt 26: 0.00135142329734
+James Buchanan 15 and William H. Taft 27: 0.00134799367382
+Warren Harding 29 and Rutherford B. Hayes 19: 0.00134195868154
+Woodrow Wilson 28 and Barack Obama 44: 0.00131813037053
+Zachary Taylor 12 and William McKinley 25: 0.00131412386945
+Rutherford B. Hayes 19 and Herbert Hoover 31: 0.00130807557394
+Franklin Pierce 14 and John Adams 2: 0.00130503893198
+William H. Taft 27 and Abraham Lincoln 16: 0.00127516218615
+Calvin Coolidge 30 and Grover Cleveland 22:24: 0.00127224089903
+Franklin Pierce 14 and William H. Taft 27: 0.0012421119222
+John Quincy Adams 6 and James Buchanan 15: 0.00123048391652
+John Quincy Adams 6 and Zachary Taylor 12: 0.00119486038562
+James Buchanan 15 and Thomas Jefferson 3: 0.00119175532103
+Zachary Taylor 12 and Ulysses S. Grant 18: 0.00118966410917
+George Washington 1 and Rutherford B. Hayes 19: 0.00117232315292
+Zachary Taylor 12 and Martin van Buren 8: 0.00116593302897
+Millard Fillmore 13 and Abraham Lincoln 16: 0.00116272652527
+William McKinley 25 and John F. Kennedy 35: 0.00113369894044
+Rutherford B. Hayes 19 and Theodore Roosevelt 26: 0.00113282070343
+Calvin Coolidge 30 and Abraham Lincoln 16: 0.0011238882442
+Franklin Pierce 14 and Grover Cleveland 22:24: 0.00110439656537
+William McKinley 25 and John Tyler 10: 0.00109507265474
+John Quincy Adams 6 and Ulysses S. Grant 18: 0.00109492169327
+Zachary Taylor 12 and Woodrow Wilson 28: 0.00108755120198
+Theodore Roosevelt 26 and Grover Cleveland 22:24: 0.00108319814543
+Martin van Buren 8 and Abraham Lincoln 16: 0.00107422465294
+Theodore Roosevelt 26 and Jimmy Carter 39: 0.00106563110416
+William H. Taft 27 and Jimmy Carter 39: 0.00106407831757
+Lyndon B. Johnson 36 and Theodore Roosevelt 26: 0.00104115853488
+James Polk 11 and Andrew Johnson 17: 0.00103743440377
+Grover Cleveland 22:24 and John Adams 2: 0.00103712509594
+Martin van Buren 8 and Thomas Jefferson 3: 0.00102710834176
+Franklin Pierce 14 and George Washington 1: 0.00102511658611
+Ronald Reagan 40 and William H. Taft 27: 0.00102119320232
+Richard Nixon 37 and Theodore Roosevelt 26: 0.00101464322396
+Ulysses S. Grant 18 and Andrew Jackson 7: 0.00101009021267
+William H. Taft 27 and John F. Kennedy 35: 0.00100332109207
+Franklin Pierce 14 and Martin van Buren 8: 0.00100172033288
+Chester A. Arthur 21 and John Tyler 10: 0.000988566400549
+Ulysses S. Grant 18 and Herbert Hoover 31: 0.000970476030505
+George H.W. Bush 41 and Theodore Roosevelt 26: 0.000965863834438
+Chester A. Arthur 21 and Millard Fillmore 13: 0.000960967202659
+James Madison 4 and Martin van Buren 8: 0.000959664327498
+Theodore Roosevelt 26 and George W. Bush 43: 0.00095848741686
+Benjamin Harrison 23 and James Monroe 5: 0.000953986883884
+Calvin Coolidge 30 and Andrew Johnson 17: 0.000936712042904
+Dwight D. Eisenhower 34 and Theodore Roosevelt 26: 0.000932960762702
+Andrew Johnson 17 and Herbert Hoover 31: 0.000928071058604
+John Quincy Adams 6 and Abraham Lincoln 16: 0.000925506759683
+Abraham Lincoln 16 and Theodore Roosevelt 26: 0.000923083306861
+Woodrow Wilson 28 and William McKinley 25: 0.000918886094251
+Abraham Lincoln 16 and John Tyler 10: 0.000907963584053
+Theodore Roosevelt 26 and William J. Clinton 42: 0.000896647328024
+Chester A. Arthur 21 and Martin van Buren 8: 0.000894540578714
+Franklin Pierce 14 and Theodore Roosevelt 26: 0.000894085140243
+Zachary Taylor 12 and Rutherford B. Hayes 19: 0.000893060389317
+Chester A. Arthur 21 and Zachary Taylor 12: 0.00085120259089
+James Polk 11 and Grover Cleveland 22:24: 0.000844993909133
+Franklin Pierce 14 and Chester A. Arthur 21: 0.000834889316483
+William McKinley 25 and John Adams 2: 0.000834518155708
+Chester A. Arthur 21 and John Adams 2: 0.000834332086918
+William H. Taft 27 and Andrew Johnson 17: 0.000831612989266
+Zachary Taylor 12 and Grover Cleveland 22:24: 0.000817874400194
+Thomas Jefferson 3 and George W. Bush 43: 0.000813083474373
+William H. Taft 27 and Millard Fillmore 13: 0.000798314895558
+Barack Obama 44 and Theodore Roosevelt 26: 0.000790190697614
+William H. Taft 27 and Gerald R. Ford 38: 0.000788984657665
+Thomas Jefferson 3 and William J. Clinton 42: 0.0007859100486
+Zachary Taylor 12 and John Adams 2: 0.000765898788304
+Warren Harding 29 and William McKinley 25: 0.000761477915351
+John F. Kennedy 35 and Theodore Roosevelt 26: 0.00075886834279
+Franklin Pierce 14 and John Tyler 10: 0.0007573540968
+George Washington 1 and Benjamin Harrison 23: 0.000748993375462
+Chester A. Arthur 21 and James Polk 11: 0.00074147257239
+Chester A. Arthur 21 and Calvin Coolidge 30: 0.000740891486937
+Franklin Pierce 14 and Rutherford B. Hayes 19: 0.000737364517283
+Harry S. Truman 33 and Theodore Roosevelt 26: 0.000736285571072
+Grover Cleveland 22:24 and Andrew Jackson 7: 0.000726274807904
+George Washington 1 and John Tyler 10: 0.000720488588746
+James Madison 4 and Benjamin Harrison 23: 0.00071166157903
+Benjamin Harrison 23 and Abraham Lincoln 16: 0.000710240907684
+Warren Harding 29 and George W. Bush 43: 0.000706427146273
+Benjamin Harrison 23 and Thomas Jefferson 3: 0.000704949052641
+Franklin Pierce 14 and Abraham Lincoln 16: 0.000698609020909
+Warren Harding 29 and Barack Obama 44: 0.000695290878565
+Rutherford B. Hayes 19 and John Adams 2: 0.00069094655763
+Abraham Lincoln 16 and Herbert Hoover 31: 0.000690329966761
+Thomas Jefferson 3 and John Tyler 10: 0.000684394860431
+George H.W. Bush 41 and William H. Taft 27: 0.000673109848156
+George Washington 1 and James Buchanan 15: 0.000672157067031
+Franklin Pierce 14 and Benjamin Harrison 23: 0.000660126385507
+Ronald Reagan 40 and Theodore Roosevelt 26: 0.000657961028544
+William H. Taft 27 and Franklin D. Roosevelt 32: 0.000657736697024
+Ulysses S. Grant 18 and Thomas Jefferson 3: 0.000652285217168
+Zachary Taylor 12 and Franklin D. Roosevelt 32: 0.000648812116044
+Woodrow Wilson 28 and Rutherford B. Hayes 19: 0.000648680557871
+William McKinley 25 and Herbert Hoover 31: 0.00064723952198
+Millard Fillmore 13 and Andrew Johnson 17: 0.000631174706615
+Calvin Coolidge 30 and Ulysses S. Grant 18: 0.000628438494485
+Franklin Pierce 14 and Andrew Johnson 17: 0.000617583939923
+George Washington 1 and Abraham Lincoln 16: 0.000607319121319
+William H. Taft 27 and Martin van Buren 8: 0.000601493118937
+Franklin Pierce 14 and Thomas Jefferson 3: 0.000597423940048
+James Polk 11 and Abraham Lincoln 16: 0.000595586657891
+Theodore Roosevelt 26 and Gerald R. Ford 38: 0.000592991868719
+Warren Harding 29 and John Adams 2: 0.000547646969718
+Millard Fillmore 13 and Theodore Roosevelt 26: 0.000541111317865
+Grover Cleveland 22:24 and Thomas Jefferson 3: 0.000535292858323
+John Quincy Adams 6 and Andrew Johnson 17: 0.000527584518088
+John F. Kennedy 35 and Rutherford B. Hayes 19: 0.000521102409598
+Warren Harding 29 and Andrew Johnson 17: 0.00051357569393
+John Adams 2 and John Tyler 10: 0.000510598056663
+George Washington 1 and Grover Cleveland 22:24: 0.000496012281406
+Abraham Lincoln 16 and John Adams 2: 0.000490529845075
+Andrew Johnson 17 and Andrew Jackson 7: 0.000489373770404
+John Quincy Adams 6 and George W. Bush 43: 0.000488551688085
+James Monroe 5 and Theodore Roosevelt 26: 0.000482024770167
+William McKinley 25 and Andrew Jackson 7: 0.000472756767459
+John Quincy Adams 6 and William J. Clinton 42: 0.000468321734399
+Benjamin Harrison 23 and Andrew Jackson 7: 0.000467247423104
+George Washington 1 and Ulysses S. Grant 18: 0.000457467003469
+James Polk 11 and William McKinley 25: 0.000456733398371
+John F. Kennedy 35 and Andrew Johnson 17: 0.000456454768694
+George Washington 1 and Andrew Johnson 17: 0.000453517678583
+Benjamin Harrison 23 and Franklin D. Roosevelt 32: 0.000446899104313
+Zachary Taylor 12 and Thomas Jefferson 3: 0.000443805661342
+James Monroe 5 and Abraham Lincoln 16: 0.000439289272477
+James Polk 11 and John Adams 2: 0.000434854511491
+Martin van Buren 8 and John Adams 2: 0.000434310853945
+Benjamin Harrison 23 and John F. Kennedy 35: 0.000431302878083
+James Polk 11 and Ronald Reagan 40: 0.000430579793689
+Lyndon B. Johnson 36 and Andrew Johnson 17: 0.000426665891494
+George Washington 1 and Zachary Taylor 12: 0.000426508455606
+Benjamin Harrison 23 and Millard Fillmore 13: 0.000425097290908
+Millard Fillmore 13 and William McKinley 25: 0.000406064085287
+William H. Taft 27 and William J. Clinton 42: 0.000404300344111
+Millard Fillmore 13 and Grover Cleveland 22:24: 0.000387747010345
+John F. Kennedy 35 and John Tyler 10: 0.000387623967887
+Warren Harding 29 and Abraham Lincoln 16: 0.000379707859002
+John Quincy Adams 6 and Rutherford B. Hayes 19: 0.000371004834427
+Chester A. Arthur 21 and Abraham Lincoln 16: 0.000355405232176
+Woodrow Wilson 28 and Grover Cleveland 22:24: 0.000355294289767
+James Madison 4 and Andrew Johnson 17: 0.000354878536724
+Zachary Taylor 12 and Benjamin Harrison 23: 0.000353043468782
+Lyndon B. Johnson 36 and William H. Taft 27: 0.000352111841499
+Chester A. Arthur 21 and William J. Clinton 42: 0.000348157154137
+James Polk 11 and George Washington 1: 0.00034696199224
+Benjamin Harrison 23 and John Adams 2: 0.000346747761799
+Rutherford B. Hayes 19 and Andrew Jackson 7: 0.000334469983215
+Andrew Jackson 7 and George W. Bush 43: 0.000331360596086
+Calvin Coolidge 30 and Zachary Taylor 12: 0.000328347734083
+John Quincy Adams 6 and William H. Taft 27: 0.000328207698849
+Warren Harding 29 and Ulysses S. Grant 18: 0.0003263950655
+Chester A. Arthur 21 and Herbert Hoover 31: 0.00032456606855
+Woodrow Wilson 28 and Andrew Johnson 17: 0.0003167538112
+William J. Clinton 42 and Andrew Jackson 7: 0.000313115255342
+Dwight D. Eisenhower 34 and Rutherford B. Hayes 19: 0.000306197358783
+Ulysses S. Grant 18 and John F. Kennedy 35: 0.000305246848819
+Ulysses S. Grant 18 and Woodrow Wilson 28: 0.000297714108383
+Calvin Coolidge 30 and Thomas Jefferson 3: 0.00029373284455
+John Quincy Adams 6 and Grover Cleveland 22:24: 0.000286514192464
+William H. Taft 27 and George W. Bush 43: 0.000286244707463
+Dwight D. Eisenhower 34 and Grover Cleveland 22:24: 0.00028248492833
+Chester A. Arthur 21 and Jimmy Carter 39: 0.000281435631326
+William H. Taft 27 and Barack Obama 44: 0.00027748462076
+Grover Cleveland 22:24 and William J. Clinton 42: 0.000272675342061
+Dwight D. Eisenhower 34 and Abraham Lincoln 16: 0.000270785647924
+John Quincy Adams 6 and John Tyler 10: 0.000267617695188
+Benjamin Harrison 23 and William J. Clinton 42: 0.000265174907969
+James Polk 11 and Warren Harding 29: 0.000261316632098
+John Quincy Adams 6 and Benjamin Harrison 23: 0.000259219493405
+William H. Taft 27 and Richard Nixon 37: 0.000257203418627
+William H. Taft 27 and James Monroe 5: 0.000252607130249
+Rutherford B. Hayes 19 and Franklin D. Roosevelt 32: 0.000249267672811
+George Washington 1 and William H. Taft 27: 0.000248257181048
+Abraham Lincoln 16 and Thomas Jefferson 3: 0.000246559422761
+Rutherford B. Hayes 19 and Jimmy Carter 39: 0.000235192557736
+Dwight D. Eisenhower 34 and Andrew Johnson 17: 0.00022290418162
+Dwight D. Eisenhower 34 and William McKinley 25: 0.000202200367944
+James Monroe 5 and Andrew Johnson 17: 0.000201662555611
+Dwight D. Eisenhower 34 and Ulysses S. Grant 18: 0.000193614204963
+Lyndon B. Johnson 36 and Andrew Jackson 7: 0.000182359238248
+James Polk 11 and Herbert Hoover 31: 0.000182209833579
+Andrew Johnson 17 and Thomas Jefferson 3: 0.000182180807985
+Rutherford B. Hayes 19 and Thomas Jefferson 3: 0.000178854291243
+Grover Cleveland 22:24 and Franklin D. Roosevelt 32: 0.000177482503574
+James Polk 11 and Woodrow Wilson 28: 0.000164002832269
+Benjamin Harrison 23 and Dwight D. Eisenhower 34: 0.000163519588456
+Franklin Pierce 14 and Calvin Coolidge 30: 0.000155530697782
+Harry S. Truman 33 and Rutherford B. Hayes 19: 0.000143714297566
+William H. Taft 27 and Andrew Jackson 7: 0.000143249326734
+James Monroe 5 and Rutherford B. Hayes 19: 0.000141012734251
+James Polk 11 and Theodore Roosevelt 26: 0.000135232666018
+Calvin Coolidge 30 and Millard Fillmore 13: 0.000129412019128
+Thomas Jefferson 3 and Gerald R. Ford 38: 0.0
+sotu and Theodore Roosevelt 26: 0.0
+George H.W. Bush 41 and James Monroe 5: 0.0
+Abraham Lincoln 16 and Andrew Jackson 7: 0.0
+James Madison 4 and Chester A. Arthur 21: 0.0
+James Madison 4 and Jimmy Carter 39: 0.0
+James Madison 4 and Theodore Roosevelt 26: 0.0
+Benjamin Harrison 23 and Gerald R. Ford 38: 0.0
+George Washington 1 and Richard Nixon 37: 0.0
+George H.W. Bush 41 and James Buchanan 15: 0.0
+Barack Obama 44 and Thomas Jefferson 3: 0.0
+James Polk 11 and George W. Bush 43: 0.0
+Richard Nixon 37 and John Tyler 10: 0.0
+Lyndon B. Johnson 36 and Thomas Jefferson 3: 0.0
+Abraham Lincoln 16 and William J. Clinton 42: 0.0
+Harry S. Truman 33 and Ulysses S. Grant 18: 0.0
+James Madison 4 and Herbert Hoover 31: 0.0
+Millard Fillmore 13 and Barack Obama 44: 0.0
+James Polk 11 and Franklin D. Roosevelt 32: 0.0
+John F. Kennedy 35 and Andrew Jackson 7: 0.0
+James Monroe 5 and George W. Bush 43: 0.0
+John Quincy Adams 6 and Jimmy Carter 39: 0.0
+John Adams 2 and Franklin D. Roosevelt 32: 0.0
+Thomas Jefferson 3 and Franklin D. Roosevelt 32: 0.0
+Zachary Taylor 12 and Jimmy Carter 39: 0.0
+George H.W. Bush 41 and Millard Fillmore 13: 0.0
+James Buchanan 15 and William J. Clinton 42: 0.0
+James Monroe 5 and Gerald R. Ford 38: 0.0
+Richard Nixon 37 and Benjamin Harrison 23: 0.0
+James Madison 4 and sotu: 0.0
+sotu and Abraham Lincoln 16: 0.0
+Lyndon B. Johnson 36 and Rutherford B. Hayes 19: 0.0
+Chester A. Arthur 21 and George Washington 1: 0.0
+James Madison 4 and George H.W. Bush 41: 0.0
+Abraham Lincoln 16 and Barack Obama 44: 0.0
+Chester A. Arthur 21 and Woodrow Wilson 28: 0.0
+James Monroe 5 and Jimmy Carter 39: 0.0
+James Polk 11 and Lyndon B. Johnson 36: 0.0
+James Madison 4 and Lyndon B. Johnson 36: 0.0
+sotu and George W. Bush 43: 0.0
+Calvin Coolidge 30 and Andrew Jackson 7: 0.0
+James Madison 4 and Warren Harding 29: 0.0
+Harry S. Truman 33 and sotu: 0.0
+James Madison 4 and Rutherford B. Hayes 19: 0.0
+William McKinley 25 and Barack Obama 44: 0.0
+sotu and Jimmy Carter 39: 0.0
+Zachary Taylor 12 and Andrew Johnson 17: 0.0
+George H.W. Bush 41 and Zachary Taylor 12: 0.0
+Grover Cleveland 22:24 and Gerald R. Ford 38: 0.0
+Millard Fillmore 13 and John F. Kennedy 35: 0.0
+William McKinley 25 and Jimmy Carter 39: 0.0
+sotu and Millard Fillmore 13: 0.0
+William McKinley 25 and Thomas Jefferson 3: 0.0
+Chester A. Arthur 21 and Gerald R. Ford 38: 0.0
+Dwight D. Eisenhower 34 and John Adams 2: 0.0
+James Buchanan 15 and Gerald R. Ford 38: 0.0
+Thomas Jefferson 3 and Herbert Hoover 31: 0.0
+Grover Cleveland 22:24 and George W. Bush 43: 0.0
+James Polk 11 and Dwight D. Eisenhower 34: 0.0
+George Washington 1 and William J. Clinton 42: 0.0
+George Washington 1 and William McKinley 25: 0.0
+Martin van Buren 8 and Gerald R. Ford 38: 0.0
+Franklin Pierce 14 and Dwight D. Eisenhower 34: 0.0
+Millard Fillmore 13 and Herbert Hoover 31: 0.0
+Rutherford B. Hayes 19 and William J. Clinton 42: 0.0
+Lyndon B. Johnson 36 and Ulysses S. Grant 18: 0.0
+George H.W. Bush 41 and James Polk 11: 0.0
+sotu and James Monroe 5: 0.0
+James Polk 11 and William J. Clinton 42: 0.0
+Martin van Buren 8 and John F. Kennedy 35: 0.0
+Benjamin Harrison 23 and George W. Bush 43: 0.0
+Warren Harding 29 and James Monroe 5: 0.0
+Abraham Lincoln 16 and John F. Kennedy 35: 0.0
+Abraham Lincoln 16 and George W. Bush 43: 0.0
+Franklin Pierce 14 and Richard Nixon 37: 0.0
+James Madison 4 and Richard Nixon 37: 0.0
+Franklin Pierce 14 and Harry S. Truman 33: 0.0
+James Madison 4 and Abraham Lincoln 16: 0.0
+sotu and Barack Obama 44: 0.0
+Jimmy Carter 39 and Thomas Jefferson 3: 0.0
+sotu and Dwight D. Eisenhower 34: 0.0
+sotu and Rutherford B. Hayes 19: 0.0
+John F. Kennedy 35 and John Adams 2: 0.0
+James Buchanan 15 and Herbert Hoover 31: 0.0
+Ronald Reagan 40 and James Monroe 5: 0.0
+Martin van Buren 8 and George W. Bush 43: 0.0
+Millard Fillmore 13 and Franklin D. Roosevelt 32: 0.0
+George H.W. Bush 41 and Franklin Pierce 14: 0.0
+Calvin Coolidge 30 and John Adams 2: 0.0
+Harry S. Truman 33 and Andrew Jackson 7: 0.0
+Ronald Reagan 40 and William McKinley 25: 0.0
+Richard Nixon 37 and Rutherford B. Hayes 19: 0.0
+Millard Fillmore 13 and Jimmy Carter 39: 0.0
+Ronald Reagan 40 and Abraham Lincoln 16: 0.0
+sotu and Richard Nixon 37: 0.0
+George Washington 1 and Jimmy Carter 39: 0.0
+Warren Harding 29 and sotu: 0.0
+Dwight D. Eisenhower 34 and Andrew Jackson 7: 0.0
+Franklin Pierce 14 and Franklin D. Roosevelt 32: 0.0
+James Buchanan 15 and sotu: 0.0
+Lyndon B. Johnson 36 and John Adams 2: 0.0
+Richard Nixon 37 and Millard Fillmore 13: 0.0
+George H.W. Bush 41 and John Quincy Adams 6: 0.0
+Richard Nixon 37 and Ulysses S. Grant 18: 0.0
+John Quincy Adams 6 and Calvin Coolidge 30: 0.0
+Franklin Pierce 14 and Barack Obama 44: 0.0
+John F. Kennedy 35 and Thomas Jefferson 3: 0.0
+James Buchanan 15 and Theodore Roosevelt 26: 0.0
+Lyndon B. Johnson 36 and Grover Cleveland 22:24: 0.0
+Jimmy Carter 39 and John Adams 2: 0.0
+Harry S. Truman 33 and John Tyler 10: 0.0
+Millard Fillmore 13 and Gerald R. Ford 38: 0.0
+Woodrow Wilson 28 and John Tyler 10: 0.0
+George H.W. Bush 41 and Andrew Jackson 7: 0.0
+Harry S. Truman 33 and Zachary Taylor 12: 0.0
+John Quincy Adams 6 and sotu: 0.0
+James Madison 4 and George W. Bush 43: 0.0
+Abraham Lincoln 16 and Franklin D. Roosevelt 32: 0.0
+Richard Nixon 37 and Thomas Jefferson 3: 0.0
+sotu and William McKinley 25: 0.0
+Ronald Reagan 40 and Andrew Johnson 17: 0.0
+Franklin Pierce 14 and George W. Bush 43: 0.0
+Dwight D. Eisenhower 34 and Thomas Jefferson 3: 0.0
+George H.W. Bush 41 and William McKinley 25: 0.0
+Jimmy Carter 39 and Andrew Jackson 7: 0.0
+James Madison 4 and Grover Cleveland 22:24: 0.0
+Dwight D. Eisenhower 34 and John Tyler 10: 0.0
+Ronald Reagan 40 and Andrew Jackson 7: 0.0
+James Buchanan 15 and Woodrow Wilson 28: 0.0
+Andrew Johnson 17 and John Adams 2: 0.0
+Richard Nixon 37 and William McKinley 25: 0.0
+Ronald Reagan 40 and John Adams 2: 0.0
+George Washington 1 and Warren Harding 29: 0.0
+Harry S. Truman 33 and William McKinley 25: 0.0
+Franklin Pierce 14 and sotu: 0.0
+James Polk 11 and Gerald R. Ford 38: 0.0
+James Madison 4 and William McKinley 25: 0.0
+Ronald Reagan 40 and Thomas Jefferson 3: 0.0
+Chester A. Arthur 21 and John F. Kennedy 35: 0.0
+Lyndon B. Johnson 36 and Martin van Buren 8: 0.0
+James Polk 11 and Barack Obama 44: 0.0
+Andrew Johnson 17 and George W. Bush 43: 0.0
+George Washington 1 and Ronald Reagan 40: 0.0
+Zachary Taylor 12 and sotu: 0.0
+Calvin Coolidge 30 and Martin van Buren 8: 0.0
+Chester A. Arthur 21 and Lyndon B. Johnson 36: 0.0
+Theodore Roosevelt 26 and Andrew Johnson 17: 0.0
+Woodrow Wilson 28 and Abraham Lincoln 16: 0.0
+James Monroe 5 and Franklin D. Roosevelt 32: 0.0
+Warren Harding 29 and Zachary Taylor 12: 0.0
+Jimmy Carter 39 and John Tyler 10: 0.0
+Zachary Taylor 12 and Gerald R. Ford 38: 0.0
+Calvin Coolidge 30 and James Buchanan 15: 0.0
+John Quincy Adams 6 and Lyndon B. Johnson 36: 0.0
+Chester A. Arthur 21 and Richard Nixon 37: 0.0
+James Polk 11 and Calvin Coolidge 30: 0.0
+James Buchanan 15 and Barack Obama 44: 0.0
+Ronald Reagan 40 and Rutherford B. Hayes 19: 0.0
+Ronald Reagan 40 and Martin van Buren 8: 0.0
+sotu and Gerald R. Ford 38: 0.0
+Lyndon B. Johnson 36 and John Tyler 10: 0.0
+Lyndon B. Johnson 36 and Zachary Taylor 12: 0.0
+Woodrow Wilson 28 and Millard Fillmore 13: 0.0
+George Washington 1 and Herbert Hoover 31: 0.0
+Gerald R. Ford 38 and John Adams 2: 0.0
+George H.W. Bush 41 and Rutherford B. Hayes 19: 0.0
+Martin van Buren 8 and William McKinley 25: 0.0
+Barack Obama 44 and John Tyler 10: 0.0
+Theodore Roosevelt 26 and Andrew Jackson 7: 0.0
+Warren Harding 29 and Thomas Jefferson 3: 0.0
+John Quincy Adams 6 and Ronald Reagan 40: 0.0
+Abraham Lincoln 16 and Jimmy Carter 39: 0.0
+John Quincy Adams 6 and Woodrow Wilson 28: 0.0
+Ronald Reagan 40 and Ulysses S. Grant 18: 0.0
+Harry S. Truman 33 and Millard Fillmore 13: 0.0
+John Quincy Adams 6 and William McKinley 25: 0.0
+William McKinley 25 and William J. Clinton 42: 0.0
+Lyndon B. Johnson 36 and sotu: 0.0
+Harry S. Truman 33 and Benjamin Harrison 23: 0.0
+James Madison 4 and Harry S. Truman 33: 0.0
+James Buchanan 15 and John F. Kennedy 35: 0.0
+William McKinley 25 and George W. Bush 43: 0.0
+Lyndon B. Johnson 36 and William McKinley 25: 0.0
+George H.W. Bush 41 and Martin van Buren 8: 0.0
+John Quincy Adams 6 and John F. Kennedy 35: 0.0
+Ulysses S. Grant 18 and Barack Obama 44: 0.0
+James Polk 11 and Jimmy Carter 39: 0.0
+George Washington 1 and Franklin D. Roosevelt 32: 0.0
+Richard Nixon 37 and Andrew Johnson 17: 0.0
+George Washington 1 and Dwight D. Eisenhower 34: 0.0
+James Madison 4 and Barack Obama 44: 0.0
+James Polk 11 and sotu: 0.0
+Franklin Pierce 14 and Lyndon B. Johnson 36: 0.0
+George Washington 1 and Theodore Roosevelt 26: 0.0
+Harry S. Truman 33 and Grover Cleveland 22:24: 0.0
+Ronald Reagan 40 and sotu: 0.0
+Richard Nixon 37 and Andrew Jackson 7: 0.0
+sotu and Franklin D. Roosevelt 32: 0.0
+Richard Nixon 37 and Abraham Lincoln 16: 0.0
+Zachary Taylor 12 and William J. Clinton 42: 0.0
+William H. Taft 27 and John Tyler 10: 0.0
+Calvin Coolidge 30 and James Monroe 5: 0.0
+James Madison 4 and Ronald Reagan 40: 0.0
+Chester A. Arthur 21 and sotu: 0.0
+Andrew Johnson 17 and Gerald R. Ford 38: 0.0
+Harry S. Truman 33 and James Monroe 5: 0.0
+Martin van Buren 8 and Barack Obama 44: 0.0
+Ulysses S. Grant 18 and Gerald R. Ford 38: 0.0
+Chester A. Arthur 21 and Franklin D. Roosevelt 32: 0.0
+Harry S. Truman 33 and Abraham Lincoln 16: 0.0
+Lyndon B. Johnson 36 and Millard Fillmore 13: 0.0
+James Buchanan 15 and Richard Nixon 37: 0.0
+Warren Harding 29 and Andrew Jackson 7: 0.0
+Barack Obama 44 and Grover Cleveland 22:24: 0.0
+Zachary Taylor 12 and Richard Nixon 37: 0.0
+William J. Clinton 42 and John Tyler 10: 0.0
+Harry S. Truman 33 and Andrew Johnson 17: 0.0
+George H.W. Bush 41 and Benjamin Harrison 23: 0.0
+Calvin Coolidge 30 and sotu: 0.0
+George H.W. Bush 41 and sotu: 0.0
+James Madison 4 and John F. Kennedy 35: 0.0
+Benjamin Harrison 23 and Barack Obama 44: 0.0
+sotu and Andrew Jackson 7: 0.0
+Richard Nixon 37 and John Adams 2: 0.0
+Ulysses S. Grant 18 and Franklin D. Roosevelt 32: 0.0
+Rutherford B. Hayes 19 and Gerald R. Ford 38: 0.0
+James Polk 11 and John F. Kennedy 35: 0.0
+Zachary Taylor 12 and Dwight D. Eisenhower 34: 0.0
+George H.W. Bush 41 and Chester A. Arthur 21: 0.0
+James Buchanan 15 and Dwight D. Eisenhower 34: 0.0
+James Madison 4 and Dwight D. Eisenhower 34: 0.0
+Warren Harding 29 and Millard Fillmore 13: 0.0
+Franklin Pierce 14 and Herbert Hoover 31: 0.0
+George Washington 1 and Calvin Coolidge 30: 0.0
+John Quincy Adams 6 and Herbert Hoover 31: 0.0
+James Monroe 5 and John F. Kennedy 35: 0.0
+William H. Taft 27 and Thomas Jefferson 3: 0.0
+Harry S. Truman 33 and Thomas Jefferson 3: 0.0
+James Madison 4 and Calvin Coolidge 30: 0.0
+George H.W. Bush 41 and Abraham Lincoln 16: 0.0
+Theodore Roosevelt 26 and John Adams 2: 0.0
+James Buchanan 15 and Franklin D. Roosevelt 32: 0.0
+Andrew Jackson 7 and Gerald R. Ford 38: 0.0
+Warren Harding 29 and Martin van Buren 8: 0.0
+Franklin Pierce 14 and Woodrow Wilson 28: 0.0
+Ulysses S. Grant 18 and Jimmy Carter 39: 0.0
+Chester A. Arthur 21 and Barack Obama 44: 0.0
+sotu and Ulysses S. Grant 18: 0.0
+Franklin Pierce 14 and William J. Clinton 42: 0.0
+sotu and Martin van Buren 8: 0.0
+George W. Bush 43 and John Tyler 10: 0.0
+Millard Fillmore 13 and William J. Clinton 42: 0.0
+Zachary Taylor 12 and Barack Obama 44: 0.0
+Richard Nixon 37 and James Monroe 5: 0.0
+Barack Obama 44 and John Adams 2: 0.0
+William H. Taft 27 and John Adams 2: 0.0
+James Buchanan 15 and George W. Bush 43: 0.0
+Martin van Buren 8 and Franklin D. Roosevelt 32: 0.0
+sotu and John Tyler 10: 0.0
+George Washington 1 and sotu: 0.0
+Warren Harding 29 and John Tyler 10: 0.0
+James Monroe 5 and Barack Obama 44: 0.0
+Harry S. Truman 33 and George Washington 1: 0.0
+James Madison 4 and Zachary Taylor 12: 0.0
+George Washington 1 and Gerald R. Ford 38: 0.0
+John Quincy Adams 6 and Richard Nixon 37: 0.0
+Jimmy Carter 39 and Andrew Johnson 17: 0.0
+Barack Obama 44 and Rutherford B. Hayes 19: 0.0
+sotu and Herbert Hoover 31: 0.0
+sotu and Thomas Jefferson 3: 0.0
+Warren Harding 29 and James Buchanan 15: 0.0
+George H.W. Bush 41 and John Adams 2: 0.0
+James Madison 4 and Woodrow Wilson 28: 0.0
+Theodore Roosevelt 26 and John Tyler 10: 0.0
+Millard Fillmore 13 and George W. Bush 43: 0.0
+Ronald Reagan 40 and Millard Fillmore 13: 0.0
+Chester A. Arthur 21 and Ronald Reagan 40: 0.0
+Barack Obama 44 and Andrew Jackson 7: 0.0
+Franklin Pierce 14 and Warren Harding 29: 0.0
+Rutherford B. Hayes 19 and George W. Bush 43: 0.0
+George H.W. Bush 41 and Thomas Jefferson 3: 0.0
+James Buchanan 15 and Jimmy Carter 39: 0.0
+sotu and Andrew Johnson 17: 0.0
+Chester A. Arthur 21 and George W. Bush 43: 0.0
+William H. Taft 27 and sotu: 0.0
+John Tyler 10 and Franklin D. Roosevelt 32: 0.0
+sotu and William J. Clinton 42: 0.0
+William J. Clinton 42 and John Adams 2: 0.0
+James Madison 4 and William J. Clinton 42: 0.0
+Richard Nixon 37 and Martin van Buren 8: 0.0
+George Washington 1 and John F. Kennedy 35: 0.0
+Harry S. Truman 33 and James Buchanan 15: 0.0
+Martin van Buren 8 and Jimmy Carter 39: 0.0
+Chester A. Arthur 21 and Harry S. Truman 33: 0.0
+James Madison 4 and William H. Taft 27: 0.0
+Barack Obama 44 and Andrew Johnson 17: 0.0
+James Madison 4 and Gerald R. Ford 38: 0.0
+James Polk 11 and Richard Nixon 37: 0.0
+George H.W. Bush 41 and John Tyler 10: 0.0
+James Madison 4 and Franklin D. Roosevelt 32: 0.0
+Andrew Johnson 17 and Franklin D. Roosevelt 32: 0.0
+sotu and Grover Cleveland 22:24: 0.0
+Andrew Johnson 17 and William J. Clinton 42: 0.0
+George H.W. Bush 41 and Andrew Johnson 17: 0.0
+Chester A. Arthur 21 and Dwight D. Eisenhower 34: 0.0
+Ronald Reagan 40 and Grover Cleveland 22:24: 0.0
+sotu and John Adams 2: 0.0
+Benjamin Harrison 23 and Jimmy Carter 39: 0.0
+Gerald R. Ford 38 and John Tyler 10: 0.0
+Lyndon B. Johnson 36 and Benjamin Harrison 23: 0.0
+Franklin Pierce 14 and Jimmy Carter 39: 0.0
+George H.W. Bush 41 and Grover Cleveland 22:24: 0.0
+Martin van Buren 8 and William J. Clinton 42: 0.0
+James Monroe 5 and William J. Clinton 42: 0.0
+Ulysses S. Grant 18 and George W. Bush 43: 0.0
+Zachary Taylor 12 and Herbert Hoover 31: 0.0
+John Quincy Adams 6 and Franklin D. Roosevelt 32: 0.0
+sotu and Woodrow Wilson 28: 0.0
+Lyndon B. Johnson 36 and George Washington 1: 0.0
+John Quincy Adams 6 and Gerald R. Ford 38: 0.0
+William McKinley 25 and Gerald R. Ford 38: 0.0
+Richard Nixon 37 and Grover Cleveland 22:24: 0.0
+John Quincy Adams 6 and Barack Obama 44: 0.0
+John Quincy Adams 6 and Harry S. Truman 33: 0.0
+Herbert Hoover 31 and Andrew Jackson 7: 0.0
+Theodore Roosevelt 26 and Thomas Jefferson 3: 0.0
+Woodrow Wilson 28 and Andrew Jackson 7: 0.0
+Harry S. Truman 33 and John Adams 2: 0.0
+Ronald Reagan 40 and Benjamin Harrison 23: 0.0
+Ronald Reagan 40 and John Tyler 10: 0.0
+Franklin Pierce 14 and Ronald Reagan 40: 0.0
+Zachary Taylor 12 and George W. Bush 43: 0.0
+John Adams 2 and George W. Bush 43: 0.0
+John Quincy Adams 6 and Theodore Roosevelt 26: 0.0
+Zachary Taylor 12 and Ronald Reagan 40: 0.0
+Jimmy Carter 39 and Grover Cleveland 22:24: 0.0
+Zachary Taylor 12 and John F. Kennedy 35: 0.0
+Franklin Pierce 14 and Gerald R. Ford 38: 0.0
+Lyndon B. Johnson 36 and James Buchanan 15: 0.0
+Abraham Lincoln 16 and Gerald R. Ford 38: 0.0
+James Monroe 5 and Dwight D. Eisenhower 34: 0.0
+James Monroe 5 and Woodrow Wilson 28: 0.0
+Lyndon B. Johnson 36 and James Monroe 5: 0.0
+sotu and Benjamin Harrison 23: 0.0
+James Monroe 5 and Herbert Hoover 31: 0.0
+Woodrow Wilson 28 and Thomas Jefferson 3: 0.0
+John Quincy Adams 6 and Warren Harding 29: 0.0
+George Washington 1 and George W. Bush 43: 0.0
+sotu and John F. Kennedy 35: 0.0
+Martin van Buren 8 and Woodrow Wilson 28: 0.0
+Martin van Buren 8 and Theodore Roosevelt 26: 0.0
+Herbert Hoover 31 and John Adams 2: 0.0
+Lyndon B. Johnson 36 and Abraham Lincoln 16: 0.0
+George H.W. Bush 41 and Ulysses S. Grant 18: 0.0
+Calvin Coolidge 30 and John Tyler 10: 0.0
+Dwight D. Eisenhower 34 and Millard Fillmore 13: 0.0
+Harry S. Truman 33 and James Polk 11: 0.0
+James Buchanan 15 and Ronald Reagan 40: 0.0
+Martin van Buren 8 and Dwight D. Eisenhower 34: 0.0
+Herbert Hoover 31 and John Tyler 10: 0.0
+Andrew Jackson 7 and Franklin D. Roosevelt 32: 0.0
+George H.W. Bush 41 and George Washington 1: 0.0
+Harry S. Truman 33 and Martin van Buren 8: 0.0
+John Quincy Adams 6 and Dwight D. Eisenhower 34: 0.0
+Ulysses S. Grant 18 and William J. Clinton 42: 0.0
+Franklin Pierce 14 and John F. Kennedy 35: 0.0
+George Washington 1 and Barack Obama 44: 0.0
