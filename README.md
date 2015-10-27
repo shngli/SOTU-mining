@@ -1,5 +1,5 @@
 # History through the presidents' words
-This project performs text mining and clustering techniques to analyze every State of the Union address (1790-2015) through Python and R.
+This project performs text mining and clustering techniques to analyze every State of the Union address (1790-2015) in Python and R.
 
 ## Python scripts
 1. POS distribution.ipynb (Part-of-speech tagging of every president). **Output**: POS output
