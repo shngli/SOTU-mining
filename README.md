@@ -6,4 +6,4 @@ This project performs text mining and clustering techniques to analyze every Sta
 2. TFIDF Cosine.ipynb: TF-IDF calculations and cosine similarity comaprisons between every president. **Output**: TFIDF output.txt, Cosine Similarities.txt
 
 ## R script
-(to be updated)
+1. sotu mining.Rmd: Hierarchical clustering, K-Means clustering, word associations and word clouds. **Output**: sotu_mining.html

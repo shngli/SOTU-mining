@@ -1,0 +1,968 @@
+---
+title: "History Through The Presidents' Words"
+author: "Chisheng Li"
+output: html_document
+---
+
+```{r, echo=FALSE, message=FALSE}
+library(stringr)
+library(plyr)
+library(dplyr)
+library(magrittr)
+library(mgcv)
+library(tm)
+library(proxy)
+library(ggdendro)
+library(ggplot2)
+set.seed(100)
+```
+
+## Hierarchical Clustering
+
+The Presidents are clustered based on the similarity of their State of the Union texts using the Jensen–Shannon divergence method. There are approximately 5 groups, and it is apparent that the presidents of similar eras are grouped together.
+
+```{r, echo=FALSE, warning=FALSE}
+## Load data
+sotu <- readLines(file("sotu1790-2015.txt"))
+
+breaks <- grep("\\*\\*\\*", sotu)
+
+# Combine every SOTU speech into a single list, then split the speeches into separate lines by ".", "?" and "!"
+combine = list()
+for (i in 1:228){
+  combine[[i]] = paste(sotu[(breaks[i]+6):breaks[i+1]-1], sep=" ", collapse = " ")
+}
+combine[[229]] <- paste(sotu[(breaks[229]+6):breaks[229+1]-1], sep=" ", collapse = " ")
+sotuList <- sapply(combine, function(x) strsplit(x, "[\\?|\\.|\\!]"))
+```
+
+```{r, echo=FALSE, results="hide"}
+speechToWords = function(sentences){
+  # sentences is character vector of sentences for each speech
+  s1=gsub("'","",sentences)
+  # Remove all digits from the content
+  s2=gsub("[[:digit:]]","",s1)
+  # Remove [Applause]
+  s3=gsub("(Applause.)","",s2)
+  # Remove [Laughter]
+  s4=gsub("(Laughter.)","",s3)
+
+  # Turn characters to lower case.
+  s5=tolower(s4)
+  
+  # Use strsplit to split the text up by blanks and punctuation
+  s6=strsplit(s5,"([[:blank:]]|[[:punct:]])")
+  # Unlist the return value 
+  s7=unlist(s6)
+  
+  # Drop any empty word " "
+  s8=s7[s7!=""]
+  
+  # return a character vector of all words in the speech
+  return(s8)
+}
+```
+
+```{r, echo=FALSE, results="hide"}
+# Extract every word used in each SOTU speech into a list Words
+sotuWords <- lapply(sotuList, speechToWords)
+
+load("speechesDF.Rda")
+```
+
+```{r, echo=FALSE, results="hide"}
+# Computing the distances between every SOTU speech
+# Sort the list of words into unique terms
+# Unlist the return value and use unique() to get the bag of words
+# Alphabetize the bag of words and call it uniqueWords
+# 23571 unique words total
+uniqueWords <- sort(unique(unlist(sotuWords)))
+
+# Create a word vector for every SOTU speech
+vector <- rep(0, length(uniqueWords))
+names(vector) <- uniqueWords
+
+wordVector = lapply(sotuWords, function(x){
+  vector[names(table(x))]=table(x)
+  return(vector)
+})
+
+# From the word vector, create a matrix with columns corresponding to speeches and rows to words 
+wordMatrix <- matrix(unlist(wordVector), ncol  = length(wordVector), byrow = FALSE)
+```
+
+```{r, echo=FALSE, results="hide"}
+# Load compSJDist.R to compute the linguinstic distance between every president using the Jensen-Shannon metric
+source("compSJDist.R")
+
+# Create a matrix presMatrix by adding the word vectors for the speecbes made by the same president
+pres <- unique(speechesDF$president)
+
+presMatrix <- matrix(0, nrow=length(uniqueWords),ncol=length(pres))
+for(i in 1:length(pres)){
+  if(sum(speechesDF$president==pres[i])!=1){
+    presMatrix[,i]=rowSums(wordMatrix[,speechesDF$president==pres[i]])
+  }else{
+    presMatrix[,i]=wordMatrix[,speechesDF$president==pres[i]]
+  }
+}
+```
+
+```{r, echo=FALSE, results="hide", message=FALSE}
+# Compute the document frequency df by calculating the number of presidents that used every word
+df <- list()
+for(i in 1:length(uniqueWords)){
+  df[i] = sum(presMatrix[i,]!=0)
+}
+df <- unlist(df)
+
+# Calculate the distance between every president based on the similarity of words that they used in their SOTU speech
+# The lower distance values denote higher similarity
+presDist <- compSJDist(tf = presMatrix, df=df, terms=uniqueWords)
+rownames(presDist) <- unique(pres)
+colnames(presDist) <- unique(pres)
+```
+
+```{r, echo=FALSE, fig.height=8, fig.width=14}
+# Plot a hierarchical clustering of the presidents' similarity
+hc <- hclust(as.dist(presDist))
+ggdendrogram(hc, rotate = FALSE, size = 2) + labs(title="SOTU Presidents Cluster Dendrogram")
+```
+
+## K-Means Clustering
+
+The Calinski-Harabasz function suggests that 6 is the optimal number of K-Means clusters to group the presidents.
+
+```{r, echo=FALSE, message=FALSE}
+# Gather list of all document files to be processed.
+source("parseText.R")
+
+files <- list.files(path = './data/')
+
+sotu <- rbind_all(alply(.data = files, .margins = 1, .fun = parseText))
+```
+
+```{r, echo=FALSE, message=FALSE}
+# Clean the data
+sotu_corpus <- Corpus(VectorSource(sotu$content)) %>%
+    tm_map(x = ., FUN = PlainTextDocument) %>%
+    tm_map(x = ., FUN = removePunctuation) %>%
+    tm_map(x = ., FUN = removeNumbers) %>%
+    tm_map(x = ., FUN = removeWords, stopwords(kind = 'en')) %>%
+    tm_map(x = ., FUN = stripWhitespace)
+```
+
+```{r, echo=FALSE, message=FALSE}
+# Create a Document Term Matrix, with the documents as the rows, the individual words along the columns, and a frequency count as the content.
+doc_term <- DocumentTermMatrix(sotu_corpus)
+doc_term$dimnames$Docs <- sotu$file_name
+
+# Create a TF-IDF matrix that is a matrix of the same dimentions as the Document Term Frequency matrix, except each frequency has been normalized to the frequency of the term in the entire document.
+tf_idf <- weightTfIdf(m = doc_term, normalize = TRUE)
+tf_idf_mat <- as.matrix(tf_idf)
+```
+
+```{r, echo=FALSE, message=FALSE}
+# Since K-Means relies on Euclidean Distance rather than Cosine Dissimilarity, it is first necesary to normalize the TF-IDF matrix.
+tf_idf_norm <- tf_idf_mat / apply(tf_idf_mat, MARGIN = 1, FUN = function(x) sum(x^2)^0.5)
+
+pca_comp <- prcomp(tf_idf_norm)
+pca_rep <- data_frame(sotu_name = sotu$file_name, pc1 = pca_comp$x[,1], pc2 = pca_comp$x[,2])
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+# Load chIndex.R to choose the optimal number of K-Means clusters using the Calinski-Harabasz function 
+source("chIndex.R")
+x1 <- pca_rep
+x1 <- x1[-c(1)]
+
+a1 = chIndex(x1, kmax=10)
+k1.hat = a1$k[which.max(a1$ch)]
+k1 = kmeans(x1, k1.hat, iter.max=100, nstart=10, algorithm="Lloyd")
+plot(a1$k,a1$ch, xlab='K', ylab='CH(K)', type='b', main='K-Means Clustering : CH Index vs K' )
+```
+
+```{r, echo=FALSE, message=FALSE}
+# CH index suggest choosing 6 clusters
+km_clust <- kmeans(x = tf_idf_norm, centers = 6, iter.max = 100)
+pca_rep <- data_frame(sotu_name = sotu$file_name, pc1 = pca_comp$x[,1],
+                      pc2 = pca_comp$x[,2], clust_id = as.factor(km_clust$cluster))
+```
+
+K-Means clustering also shows that the presidents are grouped together by similar eras based on their PCA features.
+
+```{r, echo=FALSE, fig.height=8, fig.width=12}
+ggplot(data = pca_rep, mapping = aes(x = pc1, y = pc2, color = clust_id)) +
+    scale_color_brewer(palette = 'Set1') +
+    geom_text(mapping = aes(label = sotu_name), size = 2.5, fontface = 'bold') +
+    labs(title = 'K-Means Cluster: 6 clusters on PCA Features', x = 'PCA Factor 1', 
+         y = 'PCA Factor 2') +
+    theme_grey() +
+    theme(legend.position = 'right', legend.title = element_blank())
+```
+
+## Word Associations
+
+The following word associations shows how Democratic and Republican presidents differed in their choice of terms in their State of the Union speeches. 
+
+Democratic presidents when they discussed "freedom":
+```{r, echo=FALSE}
+load("gopTDM.Rda")
+load("demTDM.Rda")
+
+findAssocs(demTDM, "freedom", 0.06)
+```
+Republican presidents when they discussed "freedom":
+```{r, echo=FALSE}
+findAssocs(gopTDM, "freedom", 0.05)
+```
+Democratic presidents when they discussed "budget":
+```{r, echo=FALSE}
+findAssocs(demTDM, "budget", 0.06)
+```
+Republican presidents when they discussed "budget":
+```{r, echo=FALSE}
+findAssocs(gopTDM, "budget", 0.06)
+```
+Democratic presidents when they discussed "energy":
+```{r, echo=FALSE}
+findAssocs(demTDM, "energy", 0.11)
+```
+Republican presidents when they discussed "energy":
+```{r, echo=FALSE}
+findAssocs(gopTDM, "energy", 0.08)
+```
+Democratic presidents when they discussed "security":
+```{r, echo=FALSE}
+findAssocs(demTDM, "security", 0.05)
+```
+Republican presidents when they discussed "security":
+```{r, echo=FALSE}
+findAssocs(gopTDM, "security", 0.05)
+```
+Democratic presidents when they discussed "economy":
+```{r, echo=FALSE}
+findAssocs(demTDM, "economy", 0.05)
+```
+Republican presidents when they discussed "economy":
+```{r, echo=FALSE}
+findAssocs(gopTDM, "economy", 0.05)
+```
+
+## Text Hierachical Clustering
+
+Term hierachical clustering shows how frequent terms appeared together in each president's speeches and highlights the presidents' policies that were presented to Congress and to the American people.
+
+```{r, echo=FALSE}
+load("gw1TDM.Rda")
+load("ja2TDM.Rda")
+load("tj3TDM.Rda")
+load("jm4TDM.Rda")
+load("jm5TDM.Rda")
+load("jqa6TDM.Rda")
+load("aj7TDM.Rda")
+load("mvb8TDM.Rda")
+load("jt10TDM.Rda")
+load("jp11TDM.Rda")
+load("zt12TDM.Rda")
+load("mf13TDM.Rda")
+load("fp14TDM.Rda")
+load("jb15TDM.Rda")
+load("al16TDM.Rda")
+load("aj17TDM.Rda")
+load("usg18TDM.Rda")
+load("rbh19TDM.Rda")
+load("ca21TDM.Rda")
+load("gc22TDM.Rda")
+load("bh23TDM.Rda")
+load("wm25TDM.Rda")
+load("tr26TDM.Rda")
+load("wt27TDM.Rda")
+load("ww28TDM.Rda")
+load("wh29TDM.Rda")
+load("cc30TDM.Rda")
+load("hh31TDM.Rda")
+load("fdr32TDM.Rda")
+load("ht33TDM.Rda")
+load("de34TDM.Rda")
+load("jfk35TDM.Rda")
+load("lbj36TDM.Rda")
+load("rn37TDM.Rda")
+load("gf38TDM.Rda")
+load("jc39TDM.Rda")
+load("rr40TDM.Rda")
+load("ghb41TDM.Rda")
+load("wc42TDM.Rda")
+load("gwb43TDM.Rda")
+load("bo44TDM.Rda")
+```
+
+```{r, echo=FALSE}
+gw1TDM2 <- removeSparseTerms(gw1TDM, sparse = 0.955)
+gw1M <- as.matrix(gw1TDM2)
+gw1Matrix <- dist(scale(gw1M))
+gw1Fit <- hclust(gw1Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+ja2TDM2 <- removeSparseTerms(ja2TDM, sparse = 0.955)
+ja2M <- as.matrix(ja2TDM2)
+ja2Matrix <- dist(scale(ja2M))
+ja2Fit <- hclust(ja2Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+tj3TDM2 <- removeSparseTerms(tj3TDM, sparse = 0.96)
+tj3M <- as.matrix(tj3TDM2)
+tj3Matrix <- dist(scale(tj3M))
+tj3Fit <- hclust(tj3Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+jm4TDM2 <- removeSparseTerms(jm4TDM, sparse = 0.955)
+jm4M <- as.matrix(jm4TDM2)
+jm4Matrix <- dist(scale(jm4M))
+jm4Fit <- hclust(jm4Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+jm5TDM2 <- removeSparseTerms(jm5TDM, sparse = 0.96)
+jm5M <- as.matrix(jm5TDM2)
+jm5Matrix <- dist(scale(jm5M))
+jm5Fit <- hclust(jm5Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+jqa6TDM2 <- removeSparseTerms(jqa6TDM, sparse = 0.955)
+jqa6M <- as.matrix(jqa6TDM2)
+jqa6Matrix <- dist(scale(jqa6M))
+jqa6Fit <- hclust(jqa6Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+aj7TDM2 <- removeSparseTerms(aj7TDM, sparse = 0.96)
+aj7M <- as.matrix(aj7TDM2)
+aj7Matrix <- dist(scale(aj7M))
+aj7Fit <- hclust(aj7Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+mvb8TDM2 <- removeSparseTerms(mvb8TDM, sparse = 0.96)
+mvb8M <- as.matrix(mvb8TDM2)
+mvb8Matrix <- dist(scale(mvb8M))
+mvb8Fit <- hclust(mvb8Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+jt10TDM2 <- removeSparseTerms(jt10TDM, sparse = 0.96)
+jt10M <- as.matrix(jt10TDM2)
+jt10Matrix <- dist(scale(jt10M))
+jt10Fit <- hclust(jt10Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+jp11TDM2 <- removeSparseTerms(jp11TDM, sparse = 0.96)
+jp11M <- as.matrix(jp11TDM2)
+jp11Matrix <- dist(scale(jp11M))
+jp11Fit <- hclust(jp11Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+zt12TDM2 <- removeSparseTerms(zt12TDM, sparse = 0.96)
+zt12M <- as.matrix(zt12TDM2)
+zt12Matrix <- dist(scale(zt12M))
+zt12Fit <- hclust(zt12Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+mf13TDM2 <- removeSparseTerms(mf13TDM, sparse = 0.965)
+mf13M <- as.matrix(mf13TDM2)
+mf13Matrix <- dist(scale(mf13M))
+mf13Fit <- hclust(mf13Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+fp14TDM2 <- removeSparseTerms(fp14TDM, sparse = 0.955)
+fp14M <- as.matrix(fp14TDM2)
+fp14Matrix <- dist(scale(fp14M))
+fp14Fit <- hclust(fp14Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+jb15TDM2 <- removeSparseTerms(jb15TDM, sparse = 0.965)
+jb15M <- as.matrix(jb15TDM2)
+jb15Matrix <- dist(scale(jb15M))
+jb15Fit <- hclust(jb15Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+al16TDM2 <- removeSparseTerms(al16TDM, sparse = 0.97)
+al16M <- as.matrix(al16TDM2)
+al16Matrix <- dist(scale(al16M))
+al16Fit <- hclust(al16Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+aj17TDM2 <- removeSparseTerms(aj17TDM, sparse = 0.97)
+aj17M <- as.matrix(aj17TDM2)
+aj17Matrix <- dist(scale(aj17M))
+aj17Fit <- hclust(aj17Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+usg18TDM2 <- removeSparseTerms(usg18TDM, sparse = 0.97)
+usg18M <- as.matrix(usg18TDM2)
+usg18Matrix <- dist(scale(usg18M))
+usg18Fit <- hclust(usg18Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+rbh19TDM2 <- removeSparseTerms(rbh19TDM, sparse = 0.965)
+rbh19M <- as.matrix(rbh19TDM2)
+rbh19Matrix <- dist(scale(rbh19M))
+rbh19Fit <- hclust(rbh19Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+ca21TDM2 <- removeSparseTerms(ca21TDM, sparse = 0.97)
+ca21M <- as.matrix(ca21TDM2)
+ca21Matrix <- dist(scale(ca21M))
+ca21Fit <- hclust(ca21Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+gc22TDM2 <- removeSparseTerms(gc22TDM, sparse = 0.97)
+gc22M <- as.matrix(gc22TDM2)
+gc22Matrix <- dist(scale(gc22M))
+gc22Fit <- hclust(gc22Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+bh23TDM2 <- removeSparseTerms(bh23TDM, sparse = 0.97)
+bh23M <- as.matrix(bh23TDM2)
+bh23Matrix <- dist(scale(bh23M))
+bh23Fit <- hclust(bh23Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+wm25TDM2 <- removeSparseTerms(wm25TDM, sparse = 0.97)
+wm25M <- as.matrix(wm25TDM2)
+wm25Matrix <- dist(scale(wm25M))
+wm25Fit <- hclust(wm25Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+tr26TDM2 <- removeSparseTerms(tr26TDM, sparse = 0.975)
+tr26M <- as.matrix(tr26TDM2)
+tr26Matrix <- dist(scale(tr26M))
+tr26Fit <- hclust(tr26Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+wt27TDM2 <- removeSparseTerms(wt27TDM, sparse = 0.97)
+wt27M <- as.matrix(wt27TDM2)
+wt27Matrix <- dist(scale(wt27M))
+wt27Fit <- hclust(wt27Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+ww28TDM2 <- removeSparseTerms(ww28TDM, sparse = 0.97)
+ww28M <- as.matrix(ww28TDM2)
+ww28Matrix <- dist(scale(ww28M))
+ww28Fit <- hclust(ww28Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+wh29TDM2 <- removeSparseTerms(wh29TDM, sparse = 0.975)
+wh29M <- as.matrix(wh29TDM2)
+wh29Matrix <- dist(scale(wh29M))
+wh29Fit <- hclust(wh29Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+cc30TDM2 <- removeSparseTerms(cc30TDM, sparse = 0.975)
+cc30M <- as.matrix(cc30TDM2)
+cc30Matrix <- dist(scale(cc30M))
+cc30Fit <- hclust(cc30Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+hh31TDM2 <- removeSparseTerms(hh31TDM, sparse = 0.975)
+hh31M <- as.matrix(hh31TDM2)
+hh31Matrix <- dist(scale(hh31M))
+hh31Fit <- hclust(hh31Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+fdr32TDM2 <- removeSparseTerms(fdr32TDM, sparse = 0.975)
+fdr32M <- as.matrix(fdr32TDM2)
+fdr32Matrix <- dist(scale(fdr32M))
+fdr32Fit <- hclust(fdr32Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+ht33TDM2 <- removeSparseTerms(ht33TDM, sparse = 0.975)
+ht33M <- as.matrix(ht33TDM2)
+ht33Matrix <- dist(scale(ht33M))
+ht33Fit <- hclust(ht33Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+de34TDM2 <- removeSparseTerms(de34TDM, sparse = 0.97)
+de34M <- as.matrix(de34TDM2)
+de34Matrix <- dist(scale(de34M))
+de34Fit <- hclust(de34Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+jfk35TDM2 <- removeSparseTerms(jfk35TDM, sparse = 0.975)
+jfk35M <- as.matrix(jfk35TDM2)
+jfk35Matrix <- dist(scale(jfk35M))
+jfk35Fit <- hclust(jfk35Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+lbj36TDM2 <- removeSparseTerms(lbj36TDM, sparse = 0.975)
+lbj36M <- as.matrix(lbj36TDM2)
+lbj36Matrix <- dist(scale(lbj36M))
+lbj36Fit <- hclust(lbj36Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+rn37TDM2 <- removeSparseTerms(rn37TDM, sparse = 0.975)
+rn37M <- as.matrix(rn37TDM2)
+rn37Matrix <- dist(scale(rn37M))
+rn37Fit <- hclust(rn37Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+gf38TDM2 <- removeSparseTerms(gf38TDM, sparse = 0.975)
+gf38M <- as.matrix(gf38TDM2)
+gf38Matrix <- dist(scale(gf38M))
+gf38Fit <- hclust(gf38Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+jc39TDM2 <- removeSparseTerms(jc39TDM, sparse = 0.97)
+jc39M <- as.matrix(jc39TDM2)
+jc39Matrix <- dist(scale(jc39M))
+jc39Fit <- hclust(jc39Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+rr40TDM2 <- removeSparseTerms(rr40TDM, sparse = 0.975)
+rr40M <- as.matrix(rr40TDM2)
+rr40Matrix <- dist(scale(rr40M))
+rr40Fit <- hclust(rr40Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+ghb41TDM2 <- removeSparseTerms(ghb41TDM, sparse = 0.98)
+ghb41M <- as.matrix(ghb41TDM2)
+ghb41Matrix <- dist(scale(ghb41M))
+ghb41Fit <- hclust(ghb41Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+wc42TDM2 <- removeSparseTerms(wc42TDM, sparse = 0.975)
+wc42M <- as.matrix(wc42TDM2)
+wc42Matrix <- dist(scale(wc42M))
+wc42Fit <- hclust(wc42Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+gwb43TDM2 <- removeSparseTerms(gwb43TDM, sparse = 0.98)
+gwb43M <- as.matrix(gwb43TDM2)
+gwb43Matrix <- dist(scale(gwb43M))
+gwb43Fit <- hclust(gwb43Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE}
+bo44TDM2 <- removeSparseTerms(bo44TDM, sparse = 0.98)
+bo44M <- as.matrix(bo44TDM2)
+bo44Matrix <- dist(scale(bo44M))
+bo44Fit <- hclust(bo44Matrix, method = "ward.D2")
+```
+
+```{r, echo=FALSE, fig.height=6, fig.width=12}
+plot(gw1Fit, main = "George Washington Term Dendrogram")
+plot(ja2Fit, main = "John Adams Term Dendrogram")
+plot(tj3Fit, main = "Thomas Jefferson Term Dendrogram")
+plot(jm4Fit, main = "James Madison Term Dendrogram")
+plot(jm5Fit, main = "James Monroe Term Dendrogram")
+plot(jqa6Fit, main = "John Quincy Adams Term Dendrogram")
+plot(aj7Fit, main = "Andrew Jackson Term Dendrogram")
+plot(mvb8Fit, main = "Martin van Buren Term Dendrogram")
+plot(jt10Fit, main = "John Tyler Term Dendrogram")
+plot(jp11Fit, main = "James Polk Term Dendrogram")
+plot(zt12Fit, main = "Zachary Taylor Term Dendrogram")
+plot(mf13Fit, main = "Millard Fillmore Term Dendrogram")
+plot(fp14Fit, main = "Franklin Pierce Term Dendrogram")
+plot(jb15Fit, main = "James Buchanan Term Dendrogram")
+plot(al16Fit, main = "Abraham Lincoln Term Dendrogram")
+plot(aj17Fit, main = "Andrew Johnson Term Dendrogram")
+plot(usg18Fit, main = "Ulysses S. Grant Term Dendrogram")
+plot(rbh19Fit, main = "Rutherford B. Hayes Term Dendrogram")
+plot(ca21Fit, main = "Chester A. Arthur Term Dendrogram")
+plot(gc22Fit, main = "Grover Cleveland Term Dendrogram")
+plot(bh23Fit, main = "Benjamin Harrison Term Dendrogram")
+plot(wm25Fit, main = "William McKinley Term Dendrogram")
+plot(tr26Fit, main = "Theodore Roosevelt Term Dendrogram")
+plot(wt27Fit, main = "William H. Taft Term Dendrogram")
+plot(ww28Fit, main = "Woodrow Wilson Term Dendrogram")
+plot(wh29Fit, main = "Warren Harding Term Dendrogram")
+plot(cc30Fit, main = "Calvin Coolidge Term Dendrogram")
+plot(hh31Fit, main = "Herbert Hoover Term Dendrogram")
+plot(fdr32Fit, main = "Franklin D. Roosevelt Term Dendrogram")
+plot(ht33Fit, main = "Harry S. Truman Term Dendrogram")
+plot(de34Fit, main = "Dwight D. Eisenhower Term Dendrogram")
+plot(jfk35Fit, main = "John F. Kennedy Term Dendrogram")
+plot(lbj36Fit, main = "Lyndon B. Johnson Term Dendrogram")
+plot(rn37Fit, main = "Richard Nixon Term Dendrogram")
+plot(gf38Fit, main = "Gerald R. Ford Term Dendrogram")
+plot(jc39Fit, main = "Jimmy Carter Term Dendrogram")
+plot(rr40Fit, main = "Ronald Reagan Term Dendrogram")
+plot(ghb41Fit, main = "George H.W. Bush Term Dendrogram")
+plot(wc42Fit, main = "William J. Clinton Term Dendrogram")
+plot(gwb43Fit, main = "George W. Bush Term Dendrogram")
+plot(bo44Fit, main = "Barack Obama Term Dendrogram")
+```
+
+## Word clouds
+
+The following word clouds highlight the frequent terms used by every president and show how the State of the Union speeches evolved by presidency.
+
+```{r, echo=FALSE, message=FALSE}
+library(slam)
+library(wordcloud)
+
+gw1Freq <- row_sums(gw1TDM, na.rm=T)
+gw1Word <- sort(gw1Freq, decreasing = T)
+
+ja2Freq <- row_sums(ja2TDM, na.rm=T)
+ja2Word <- sort(ja2Freq, decreasing = T)
+
+tj3Freq <- row_sums(tj3TDM, na.rm=T)
+tj3Word <- sort(tj3Freq, decreasing = T)
+
+jm4Freq <- row_sums(jm4TDM, na.rm=T)
+jm4Word <- sort(jm4Freq, decreasing = T)
+
+jm5Freq <- row_sums(jm5TDM, na.rm=T)
+jm5Word <- sort(jm5Freq, decreasing = T)
+
+jqa6Freq <- row_sums(jqa6TDM, na.rm=T)
+jqa6Word <- sort(jqa6Freq, decreasing = T)
+
+aj7Freq <- row_sums(aj7TDM, na.rm=T)
+aj7Word <- sort(aj7Freq, decreasing = T)
+
+mvb8Freq <- row_sums(mvb8TDM, na.rm=T)
+mvb8Word <- sort(mvb8Freq, decreasing = T)
+
+jt10Freq <- row_sums(jt10TDM, na.rm=T)
+jt10Word <- sort(jt10Freq, decreasing = T)
+
+jp11Freq <- row_sums(jp11TDM, na.rm=T)
+jp11Word <- sort(jp11Freq, decreasing = T)
+
+zt12Freq <- row_sums(zt12TDM, na.rm=T)
+zt12Word <- sort(zt12Freq, decreasing = T)
+
+mf13Freq <- row_sums(mf13TDM, na.rm=T)
+mf13Word <- sort(mf13Freq, decreasing = T)
+
+fp14Freq <- row_sums(fp14TDM, na.rm=T)
+fp14Word <- sort(fp14Freq, decreasing = T)
+
+jb15Freq <- row_sums(jb15TDM, na.rm=T)
+jb15Word <- sort(jb15Freq, decreasing = T)
+
+al16Freq <- row_sums(al16TDM, na.rm=T)
+al16Word <- sort(al16Freq, decreasing = T)
+
+aj17Freq <- row_sums(aj17TDM, na.rm=T)
+aj17Word <- sort(aj17Freq, decreasing = T)
+
+usg18Freq <- row_sums(usg18TDM, na.rm=T)
+usg18Word <- sort(usg18Freq, decreasing = T)
+
+rbh19Freq <- row_sums(rbh19TDM, na.rm=T)
+rbh19Word <- sort(rbh19Freq, decreasing = T)
+
+ca21Freq <- row_sums(ca21TDM, na.rm=T)
+ca21Word <- sort(ca21Freq, decreasing = T)
+
+gc22Freq <- row_sums(gc22TDM, na.rm=T)
+gc22Word <- sort(gc22Freq, decreasing = T)
+
+bh23Freq <- row_sums(bh23TDM, na.rm=T)
+bh23Word <- sort(bh23Freq, decreasing = T)
+
+wm25Freq <- row_sums(wm25TDM, na.rm=T)
+wm25Word <- sort(wm25Freq, decreasing = T)
+
+tr26Freq <- row_sums(tr26TDM, na.rm=T)
+tr26Word <- sort(tr26Freq, decreasing = T)
+
+wt27Freq <- row_sums(wt27TDM, na.rm=T)
+wt27Word <- sort(wt27Freq, decreasing = T)
+
+ww28Freq <- row_sums(ww28TDM, na.rm=T)
+ww28Word <- sort(ww28Freq, decreasing = T)
+
+wh29Freq <- row_sums(wh29TDM, na.rm=T)
+wh29Word <- sort(wh29Freq, decreasing = T)
+
+cc30Freq <- row_sums(cc30TDM, na.rm=T)
+cc30Word <- sort(cc30Freq, decreasing = T)
+
+hh31Freq <- row_sums(hh31TDM, na.rm=T)
+hh31Word <- sort(hh31Freq, decreasing = T)
+
+fdr32Freq <- row_sums(fdr32TDM, na.rm=T)
+fdr32Word <- sort(fdr32Freq, decreasing = T)
+
+ht33Freq <- row_sums(ht33TDM, na.rm=T)
+ht33Word <- sort(ht33Freq, decreasing = T)
+
+de34Freq <- row_sums(de34TDM, na.rm=T)
+de34Word <- sort(de34Freq, decreasing = T)
+
+jfk35Freq <- row_sums(jfk35TDM, na.rm=T)
+jfk35Word <- sort(jfk35Freq, decreasing = T)
+
+lbj36Freq <- row_sums(lbj36TDM, na.rm=T)
+lbj36Word <- sort(lbj36Freq, decreasing = T)
+
+rn37Freq <- row_sums(rn37TDM, na.rm=T)
+rn37Word <- sort(rn37Freq, decreasing = T)
+
+gf38Freq <- row_sums(gf38TDM, na.rm=T)
+gf38Word <- sort(gf38Freq, decreasing = T)
+
+jc39Freq <- row_sums(jc39TDM, na.rm=T)
+jc39Word <- sort(jc39Freq, decreasing = T)
+
+rr40Freq <- row_sums(rr40TDM, na.rm=T)
+rr40Word <- sort(rr40Freq, decreasing = T)
+
+ghb41Freq <- row_sums(ghb41TDM, na.rm=T)
+ghb41Word <- sort(ghb41Freq, decreasing = T)
+
+wc42Freq <- row_sums(wc42TDM, na.rm=T)
+wc42Word <- sort(wc42Freq, decreasing = T)
+
+gwb43Freq <- row_sums(gwb43TDM, na.rm=T)
+gwb43Word <- sort(gwb43Freq, decreasing = T)
+
+bo44Freq <- row_sums(bo44TDM, na.rm=T)
+bo44Word <- sort(bo44Freq, decreasing = T)
+
+pal <- brewer.pal(8, "Dark2")
+```
+
+#### George Washington (1790-1796)
+```{r, echo=FALSE}
+wordcloud(words = names(gw1Word), freq = gw1Word, min.freq = 15, random.order = F, colors = pal)
+```
+
+#### John Adams (1797-1800)
+```{r, echo=FALSE}
+wordcloud(words = names(ja2Word), freq = ja2Word, min.freq = 10, random.order = F, colors = pal)
+```
+
+#### Thomas Jefferson (1801-1808)
+```{r, echo=FALSE, warning=FALSE}
+wordcloud(words = names(tj3Word), freq = tj3Word, min.freq = 30, random.order = F, colors = pal)
+```
+
+#### James Madison (1809-1816)
+```{r, echo=FALSE}
+wordcloud(words = names(jm4Word), freq = jm4Word, min.freq = 20, random.order = F, colors = pal)
+```
+
+#### James Monroe (1817-1824)
+```{r, echo=FALSE}
+wordcloud(words = names(jm5Word), freq = jm5Word, min.freq = 30, random.order = F, colors = pal)
+```
+
+#### John Quincy Adams (1825-1828)
+```{r, echo=FALSE}
+wordcloud(words = names(jqa6Word), freq = jqa6Word, min.freq = 20, random.order = F, colors = pal)
+```
+
+#### Andrew Jackson (1829-1836)
+```{r, echo=FALSE}
+wordcloud(words = names(aj7Word), freq = aj7Word, min.freq = 42, random.order = F, colors = pal)
+```
+
+#### Martin van Buren (1837-1840)
+```{r, echo=FALSE}
+wordcloud(words = names(mvb8Word), freq = mvb8Word, min.freq = 30, random.order = F, colors = pal)
+```
+
+#### John Tyler (1841-1844)
+```{r, echo=FALSE}
+wordcloud(words = names(jt10Word), freq = jt10Word, min.freq = 20, random.order = F, colors = pal)
+```
+
+#### James Polk (1845-1848)
+```{r, echo=FALSE}
+wordcloud(words = names(jp11Word), freq = jp11Word, min.freq = 37, random.order = F, colors = pal)
+```
+
+#### Zachary Taylor (1849)
+```{r, echo=FALSE}
+wordcloud(words = names(zt12Word), freq = zt12Word, min.freq = 8, random.order = F, colors = pal)
+```
+
+#### Millard Fillmore (1850-1852)
+```{r, echo=FALSE}
+wordcloud(words = names(mf13Word), freq = mf13Word, min.freq = 20, random.order = F, colors = pal)
+```
+
+#### Franklin Pierce (1853-1856)
+```{r, echo=FALSE}
+wordcloud(words = names(fp14Word), freq = fp14Word, min.freq = 20, random.order = F, colors = pal)
+```
+
+#### James Buchanan (1857-1860)
+```{r, echo=FALSE}
+wordcloud(words = names(jb15Word), freq = jb15Word, min.freq = 30, random.order = F, colors = pal)
+```
+
+#### Abraham Lincoln (1861-1864)
+```{r, echo=FALSE}
+wordcloud(words = names(al16Word), freq = al16Word, min.freq = 15, random.order = F, colors = pal)
+```
+
+#### Andrew Johnson (1865-1868)
+```{r, echo=FALSE}
+wordcloud(words = names(aj17Word), freq = aj17Word, min.freq = 20, random.order = F, colors = pal)
+```
+
+#### Ulysses S. Grant (1869-1876)
+```{r, echo=FALSE}
+wordcloud(words = names(usg18Word), freq = usg18Word, min.freq = 30, random.order = F, colors = pal)
+```
+
+#### Rutherford B. Hayes (1877-1880)
+```{r, echo=FALSE}
+wordcloud(words = names(rbh19Word), freq = rbh19Word, min.freq = 30, random.order = F, colors = pal)
+```
+
+#### Chester A. Arthur (1881-1884)
+```{r, echo=FALSE}
+wordcloud(words = names(ca21Word), freq = ca21Word, min.freq = 15, random.order = F, colors = pal)
+```
+
+#### Grover Cleveland (1885-1888, 1893-1896)
+```{r, echo=FALSE}
+wordcloud(words = names(gc22Word), freq = gc22Word, min.freq = 45, random.order = F, colors = pal)
+```
+
+#### Benjamin Harrison (1889-1892)
+```{r, echo=FALSE}
+wordcloud(words = names(bh23Word), freq = bh23Word, min.freq = 32, random.order = F, colors = pal)
+```
+
+#### William McKinley (1897-1900)
+```{r, echo=FALSE}
+wordcloud(words = names(wm25Word), freq = wm25Word, min.freq = 30, random.order = F, colors = pal)
+```
+
+#### Theodore Roosevelt (1901-1908)
+```{r, echo=FALSE}
+wordcloud(words = names(tr26Word), freq = tr26Word, min.freq = 125, random.order = F, colors = pal)
+```
+
+#### William H. Taft (1909-1912)
+```{r, echo=FALSE}
+wordcloud(words = names(wt27Word), freq = wt27Word, min.freq = 50, random.order = F, colors = pal)
+```
+
+#### Woodrow Wilson (1913-1920)
+```{r, echo=FALSE}
+wordcloud(words = names(ww28Word), freq = ww28Word, min.freq = 37, random.order = F, colors = pal)
+```
+
+#### Warren Harding (1921-1922)
+```{r, echo=FALSE}
+wordcloud(words = names(wh29Word), freq = wh29Word, min.freq = 17, random.order = F, colors = pal)
+```
+
+#### Calvin Coolidge (1923-1928)
+```{r, echo=FALSE}
+wordcloud(words = names(cc30Word), freq = cc30Word, min.freq = 33, random.order = F, colors = pal)
+```
+
+#### Herbert Hoover (1929-1932)
+```{r, echo=FALSE}
+wordcloud(words = names(hh31Word), freq = hh31Word, min.freq = 30, random.order = F, colors = pal)
+```
+
+#### Franklin D. Roosevelt (1934-1945)
+```{r, echo=FALSE}
+wordcloud(words = names(fdr32Word), freq = fdr32Word, min.freq = 25, random.order = F, colors = pal)
+```
+
+#### Harry S. Truman (1946-1953)
+```{r, echo=FALSE, warning=FALSE}
+wordcloud(words = names(ht33Word), freq = ht33Word, min.freq = 65, random.order = F, colors = pal)
+```
+
+#### Dwight D. Eisenhower (1953-1961)
+```{r, echo=FALSE, warning=FALSE}
+wordcloud(words = names(de34Word), freq = de34Word, min.freq = 90, random.order = F, colors = pal)
+```
+
+#### John F. Kennedy (1961-1963)
+```{r, echo=FALSE}
+wordcloud(words = names(jfk35Word), freq = jfk35Word, min.freq = 15, random.order = F, colors = pal)
+```
+
+#### Lyndon B. Johnson (1964-1969)
+```{r, echo=FALSE}
+wordcloud(words = names(lbj36Word), freq = lbj36Word, min.freq = 35, random.order = F, colors = pal)
+```
+
+#### Richard Nixon (1970-1974)
+```{r, echo=FALSE}
+wordcloud(words = names(rn37Word), freq = rn37Word, min.freq = 20, random.order = F, colors = pal)
+```
+
+#### Gerald R. Ford (1975-1977)
+```{r, echo=FALSE}
+wordcloud(words = names(gf38Word), freq = gf38Word, min.freq = 23, random.order = F, colors = pal)
+```
+
+#### Jimmy Carter (1978-1981)
+```{r, echo=FALSE, warning=FALSE}
+wordcloud(words = names(jc39Word), freq = jc39Word, min.freq = 90, random.order = F, colors = pal)
+```
+
+#### Ronald Reagan (1982-1988)
+```{r, echo=FALSE}
+wordcloud(words = names(rr40Word), freq = rr40Word, min.freq = 45, random.order = F, colors = pal)
+```
+
+#### George H.W. Bush (1989-1992)
+```{r, echo=FALSE}
+wordcloud(words = names(ghb41Word), freq = ghb41Word, min.freq = 15, random.order = F, colors = pal)
+```
+
+#### William J. Clinton (1993-2000)
+```{r, echo=FALSE}
+wordcloud(words = names(wc42Word), freq = wc42Word, min.freq = 42, random.order = F, colors = pal)
+```
+
+#### George W. Bush (2001-2008)
+```{r, echo=FALSE}
+wordcloud(words = names(gwb43Word), freq = gwb43Word, min.freq = 30, random.order = F, colors = pal)
+```
+
+#### Barack Obama (2009-2015)
+```{r, echo=FALSE}
+wordcloud(words = names(bo44Word), freq = bo44Word, min.freq = 38, random.order = F, colors = pal)
+```
